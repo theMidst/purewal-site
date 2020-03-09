@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!--
+    Created on : 2020-03-05
+    Author     : Kent Nippard, Andrew McEachren
+-->
+
+<html>
+
+<head>
+  <title>Joe Purewal - Mortgage Payment Calculator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- bootstrap before our CSS -->
+  <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+  <!-- load script for nav bar first -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/navBarStyle.css"> -->
+  <link rel="stylesheet" type="text/css" href="../css/mortgagePaymentCalcStyle.css">
+  <!-- jquery & popper before bootstrap JS -->
+  <script src="../js/jquery-3.4.1.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+  <!-- <script src="bootstrap/js/bootstrap.js"></script> -->
+  <script src="../js/homeScript.js"></script>
+</head>
+
+<body>
+  <div class="col-sm-12">
+    <!-- this is the Purchase tab -->
+    <form action="calculateMortgage">
+      <table class="table">
+        <thead>
+          <tr>
+            <td colspan="7">
+              <!-- make tooltip for asking price:
+                -- STEP 1: Enter the price of the home you're interested in and press GO.
+              -->
+              <label for="askingPrice">Asking Price</label>
+              <input type="text" name="askingPrice" />
+              <input type="button" value="Go" />
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="2">
+              <img src="https://octicons.github.com/icon/info"><!-- help button / tooltip -->
+            </td>
+            <td rowspan="2">
+              <label for="downPayment1">Down Payment</label>
+            </td>
+            <td>
+              <!-- icon column -->
+            </td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <!-- <td></td>
+            <th></th> -->
+            <td>-
+              <!-- minus icon -->
+            </td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td>?
+              <!-- help button / tooltip -->
+              </td>
+            <td>Mortgage Insurance</td>
+            <td>+
+              <!-- plus icon -->
+            </td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr class="table-info">
+            <td>
+              <!-- help button / tooltip -->
+            </td>
+            <th>Total Mortgage Required</th>
+            <td>=
+              <!-- icon goes here -->
+            </td>
+            <td class="totalMortgage1">$-</td>
+            <td class="totalMortgage2">$-</td>
+            <td class="totalMortgage3">$-</td>
+            <td class="totalMortgage4">$-</td>
+          </tr>
+          <tr>
+            <td>?
+              <!-- help button / tooltip -->
+            </td>
+            <td>Amortization period</td>
+            <td>
+              <!-- empty, no icon -->
+            </td>
+            <td>
+              <!-- populate select with 5-30 + other years -->
+              <select class="amortizationPeriod1">
+                <option>Select</option>
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+                <option>Other</option>
+              </select>
+            </td>
+            <td>
+              <!-- populate select with 5-30 + other years -->
+              <select class="amortizationPeriod2">
+                <option>Select</option>
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+                <option>Other</option>
+              </select>
+            </td>
+            <td>
+              <!-- populate select with 5-30 + other years -->
+              <select class="amortizationPeriod3">
+                <option>Select</option>
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+                <option>Other</option>
+              </select>
+            </td>
+            <td>
+              <!-- populate select with 5-30 + other years -->
+              <select class="amortizationPeriod4">
+                <option>Select</option>
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+                <option>Other</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>?
+              <!-- help button / tooltip -->
+            </td>
+            <td>Mortgage rate</td>
+            <td>
+              <!-- no icon here -->
+            </td>
+            <td><input type="button" class="selectRate" onClick="selectRate()" value="Select Rate" /></td>
+            <td><input type="button" class="selectRate" onClick="selectRate()" value="Select Rate" /></td>
+            <td><input type="button" class="selectRate" onClick="selectRate()" value="Select Rate" /></td>
+            <td><input type="button" class="selectRate" onClick="selectRate()" value="Select Rate" /></td>
+          </tr>
+          <tr>
+            <td>?
+              <!-- help button / tooltip -->
+            </td>
+            <td>Mortgage type</td>
+            <td>
+              <!-- no icon here -->
+            </td>
+            <td class="mortgageType">
+              <!-- filled in depending on selection -->
+            </td>
+            <td class="mortgageType">
+              <!-- filled in depending on selection -->
+            </td>
+            <td class="mortgageType">
+              <!-- filled in depending on selection -->
+            </td>
+            <td class="mortgageType">
+              <!-- filled in depending on selection -->
+            </td>
+          </tr>
+          <tr class="table-info">
+            <td rowspan="2">?
+              <!-- help button / tooltip -->
+            </td>
+            <th>Total Mortgage Payment</th>
+            <td>
+              <!-- no icon here -->
+            </td>
+            <td class="totalMortgagePayment1">$-</td>
+            <td class="totalMortgagePayment2">$-</td>
+            <td class="totalMortgagePayment3">$-</td>
+            <td class="totalMortgagePayment4">$-</td>
+          </tr>
+          <tr class="table-info">
+            <td>Frequency
+              <select>
+                <!-- make the select box less wide than its dropdown window -->
+                <option>Monthly</option>
+                <option>Bi-Weekly</option>
+                <option>Accelerated Bi-Weekly</option>
+              </select>
+            </td>
+            <td></td>
+            <td><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></td>
+            <td><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></td>
+            <td><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></td>
+            <td><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></td>
+          </tr>
+          <tr>
+            <td><!-- no help icon --></td>
+            <td><!-- no icon --></td>
+            <td id="landTransferTax"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>?</td>
+            <td>Provincial:</td>
+            <td>+</td>
+            <td id="provincialTransferTax"></td>
+          </tr>
+          <tr>
+            <td>?</td>
+            <td>Municipal:</td>
+            <td>+</td>
+            <td id="municipalTransferTax"></td>
+          </tr>
+          <tr>
+            <td>?</td>
+            <td>Rebate:</td>
+            <td>-</td>
+            <td id="provincialTransferTax"></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</body>
+
+</html>

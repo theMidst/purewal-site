@@ -1,0 +1,22 @@
+.header {
+    text-align: center;
+}
+
+.card {
+    width: 500px;
+    max-height: auto;
+}
+
+.card-title {
+    font-size: 1.2em;
+}
+
+.card:hover {
+    border: solid 2px rgb(216, 174, 77);
+}
+
+@media screen and (orientation: portrait) {
+    .header {
+        text-align: center;
+    }
+}

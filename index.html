@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+    Created on : 2020-01-17, 8:33 PM
+    Author     : Kent Nippard, Andrew McEachren
+-->
+
+<html>
+
+<head>
+  <title>Joe Purewal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- bootstrap before our CSS -->
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/homeStyle.css">
+  <!-- jquery & popper before bootstrap JS -->
+  <script src="js/jquery-3.4.1.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+  <!-- <script src="bootstrap/js/bootstrap.js"></script> -->
+  <script src="js/homeScript.js"></script>
+</head>
+
+<body>
+  <section class="homeNavFixed" id="navBar">
+    <!-- True North has a small section above the site logo,
+             still need to fill that in
+        -->
+    <div class="topNav" id="homeTopNav">
+      <h4>JOE PUREWAL</h4>
+      <a href="#home" class="active">Home</a>
+      <a href="#rates">Rates</a>
+      <a href="#mortgage">Mortgages</a>
+      <!-- open drop down menu when highlighting tools -->
+      <a href="mortgage-payment-calculator/index.html">Tools</a>
+      <a href="#contact">Contact</a>
+      <a href="apply/apply.html">Apply Now</a>
+      <a href="javascript:void(0);" class="icon" onclick="navFunction()">
+        Icon<i class="smallScreenTopNav"></i>
+      </a>
+    </div>
+  </section>
+
+  <section class="homeGrid">
+
+    <section class="homeNavPlaceholder">
+      <!-- Empty placeholder section for the nav bar -->
+    </section>
+
+    <section class="homeBanner boxAll">
+      <svg height="65" width="500">
+        <polygon points="250,5 500,60 0,60" style="fill:none;stroke:#d8ae4d;stroke-width:3" />
+        <text x="212" y="55" font-family="Times New Roman" font-size="35" fill="black">GET</text>
+      </svg>
+      <div class="setTextAnim">
+        <div class ="setTextS" id="sloganLetterS">S</div>
+        <div class ="setTextE" id="sloganLetterE">E</div>
+        <div class ="setTextT" id="sloganLetterT">T</div>
+        <div class ="setTextS" id="sloganTextS">SAFE</div>
+        <div class ="setTextE" id="sloganTextE">EASY</div>
+        <div class ="setTextT" id="sloganTextT">TRUSTWORTHY</div>
+      </div>
+      <h3>WITH</h3>
+      <h1><b>JOE PUREWAL</b></h1>
+      <h3>MORTGAGES</h3>
+    </section>
+
+    <section class="homeReviewLeft boxAll">
+      <div class="boxBody">
+        <div class="boxReviewLeft">
+          <img src="images/house.jpeg">
+        </div>
+      </div>
+    </section>
+    <section class="homeReviewRight boxAll">
+      <div class="boxBody">
+        <div class="boxReviewRight">
+          <h2>Joe is renowned for his work with people of all nationalities.</h2>
+          <p>You can trust that no matter where you come from, Joe understands you
+            and will make you feel at home at his Mississauga office.</p>
+          <p><a href="#testimonials">See what our customers think!</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="homeRatesAdLeft boxAll">
+      <div class="boxBody">
+        <div class="boxRatesAdLeft">
+          Something here...
+        </div>
+      </div>
+    </section>
+    <section class="homeRatesAdRight boxAll">
+      <div class="boxBody">
+        <div class="boxRatesAdRight">
+          <h2>Joe 2, something else.</h2>
+          <p>More textie, textie, lorem ipsum kinda thing. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas omnis blanditiis mollitia expedita in quo. Quod soluta, quasi autem quos necessitatibus commodi distinctio doloremque sapiente, consectetur iure explicabo magni corporis!</p>
+          <p><a href="#testimonials">See what our customers think!</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="homeCallLeft boxAll">
+      <div class="boxBody">
+        <div class="boxCallLeft">
+          <p>call/contact content goes here</p>
+        </div>
+      </div>
+    </section>
+    <section class="homeCallRight boxAll">
+      <div class="boxBody">
+        <div class="boxCallRight">
+          <p>call/contact content goes here</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="homeRatesCompareLeft boxAll">
+      <div class="boxBody">
+        <div class="boxRatesCompareLeft">
+          <p>call/contact content goes here</p>
+        </div>
+      </div>
+    </section>
+    <section class="homeRatesCompareRight boxAll">
+      <div class="boxBody">
+        <div class="boxRatesCompareRight">
+          <p>call/contact content goes here</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="homeRatesWidgetLeft boxAll">
+      <div class="boxBody">
+        <div class="boxRatesWidgetLeft">
+          <p>rate content goes here</p>
+        </div>
+      </div>
+    </section>
+    <section class="homeRatesWidgetRight boxAll">
+      <div class="boxBody">
+        <div class="boxRatesWidgetRight">
+          <p>rate description content goes here</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="homeBlogLeft boxAll">
+      <div class="boxBody">
+        <div class="boxBlogLeft">
+          <p>blog content goes here</p>
+        </div>
+      </div>
+    </section>
+    <section class="homeBlogRight boxAll">
+      <div class="boxBody">
+        <div class="boxBlogRight">
+          <p>blog content goes here</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="homeMortgageRemLeft boxAll">
+      <div class="boxBody">
+        <div class="boxMortgageRemLeft">
+          <p>mortgage reminder content goes here</p>
+        </div>
+      </div>
+    </section>
+    <section class="homeMortgageRemRight boxAll">
+      <div class="boxBody">
+        <div class="boxMortgageRemRight">
+          <p>mortgage reminder content goes here</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="homeExtraAreaLeft boxAll">
+      <div class="boxBody">
+        <div class="boxExtraAreaLeft">
+          <p>(true north has some link to another assosicated site)
+            any extra content needed goes here
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="homeExtraAreaRight boxAll">
+      <div class="boxBody">
+        <div class="boxExtraAreaRight">
+          <p>(true north has some link to another assosicated site)
+            any extra content needed goes here
+          </p>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <footer class="footer">
+    151 City Centre Drive, Suite 601, Mississauga, ON, L5B 1M7
+    <br />
+    Brokerage # 10801 <span style="color: #d8ae4d;">|</span>
+    F: 1 888 529 3144 <span style="color: #d8ae4d;">|</span>
+    E: documents@joepurewal.ca
+  </footer>
+</body>
+</html>
