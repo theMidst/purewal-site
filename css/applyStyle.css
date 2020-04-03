@@ -26,13 +26,13 @@ html.is-leaving .transition-fade {
 .applicationList {
     border: solid rgb(161, 158, 158) 2px;
     border-radius: 15px;
-    width: 550px;
+    max-width: 550px;
     box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
 }
 
 .card {
     height: 150px;
-    width: 500px;
+    max-width: 500px;
     color: black;
     background: white;
     transition: all 0.2s ease-in-out;
@@ -62,6 +62,10 @@ html.is-leaving .transition-fade {
         padding: 5px;
     }
 
+    .card-title {
+        font-size: 0.8em;
+    }
+
     .card-img {
         max-width: 40%;  
     }
@@ -73,10 +77,6 @@ html.is-leaving .transition-fade {
         padding: 10px;
         box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
         width: auto;
-    }
-
-    .col-md-4 {
-        width: 33.3%;
     }
 
     .spacingBox {
