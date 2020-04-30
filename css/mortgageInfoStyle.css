@@ -1,0 +1,45 @@
+body{
+    margin: 5px;
+}
+
+.container {
+    border: solid rgb(161, 158, 158) 2px;
+    border-radius: 15px;
+    max-width: 550px;
+    box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
+    padding: 20px;
+}
+
+.spacingBox {
+    height: 30px;
+}
+
+.card-style-top{
+    padding: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.card-style-bottom{
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.btn-border {
+    border: solid rgb(206, 212, 218) 1px;
+    margin-top: 5px;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.card:hover {
+    border: solid 2px rgb(216, 174, 77);
+    box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
+}
+
+.active {
+    background-color: rgb(75, 181, 67) !important;
+    box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
+  }
