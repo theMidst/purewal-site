@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Created on : 2020-01-17, 8:33 PM
-    Author     : Kent Nippard, Andrew McEachren
--->
 <html>
 <head>
   <title>Joe Purewal</title>
@@ -19,9 +15,9 @@
 <body>
   <div class="container-fluid">
     <!-- ====================== NAV BAR ========================== -->
-    <nav id="topNav" class="navbar fixed-top navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="index.html">
-        <img id="brand" src="images/JP-328×89-REVERSE-Web-Banner-Black.png" alt="">
+    <nav id="topNav" class="navbar sticky-top navbar-expand-lg navbar-light navbar-custom row">
+      <a class="navbar-brand col" href="index.html">
+        <img class="img-fluid" id="brand" src="images/JP-328×89-REVERSE-Web-Banner-Black.png" alt="">
         <span class="sr-only">(current)</span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,27 +61,33 @@
     </nav>
 
     <section class="homeGrid">
-      <section class="homeNavPlaceholder">
-        <!-- Empty placeholder section for the nav bar -->
-      </section>
 
-      <section class="homeBanner boxAll">
-        <!-- <svg height="65" width="500">
-          <polygon points="250,5 500,60 0,60" style="fill:none;stroke:#d8ae4d;stroke-width:3" />
-          <text x="212" y="55" font-family="Times New Roman" font-size="35" fill="black">GET</text>
+      <section class="homeBanner">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 13" preserveAspectRatio="xMidYMax slice">
+          <polygon points="100,1 200,12 0,12" style="fill:none;stroke:#d8ae4d;stroke-width:1" />
+          <text x="88.5" y="11" font-family="Times New Roman" font-size="10" fill="black">GET</text>
         </svg> -->
-        <svg height="65" width="1000" xmlns="http://www.w3.org/2000/svg"  preserveAspectRatio="xMidYMax slice">
-          <polygon points="500,5 1000,60 0,60" style="fill:none;stroke:#d8ae4d;stroke-width:3"  />
-          <text x="460" y="55" font-family="Times New Roman" font-size="35" fill="black">GET</text>
+        <svg class="house" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 20" preserveAspectRatio="xMidYMax slice">
+          <!-- <polygon points="100,1 200,12 0,12" style="fill:none;stroke:#d8ae4d;stroke-width:1" /> -->
+          <line x1="0" y1="16" x2="100.1" y2="1" />
+          <line x1="0" y1="16" x2="80" y2="16" />
+          <line x1="200" y1="16" x2="99.9" y2="1" />
+          <line x1="200" y1="16" x2="120" y2="16" />
+          <text x="83" y="18.7" font-family="Times New Roman" font-size="16" fill="black">GET</text>
         </svg>
         <div class="setTextAnim">
-          <div class ="setTextS" id="sloganLetterS">S</div>
-          <div class ="setTextE" id="sloganLetterE">E</div>
-          <div class ="setTextT" id="sloganLetterT">T</div>
-          <div class ="setTextS" id="sloganTextS">SAFE</div>
-          <div class ="setTextE" id="sloganTextE">EASY</div>
-          <div class ="setTextT" id="sloganTextT">TRUSTWORTHY</div>
+          <div class="row setLetters">
+            <div class="col setTextS" id="sloganLetter">S</div>
+            <div class="col setTextE" id="sloganLetter">E</div>
+            <div class="col setTextT" id="sloganLetter">T</div>
+          </div>
+          <div class="row setSubtitle">
+            <div class="col setTextS" id="sloganTextS">SAFE</div>
+            <div class="col setTextE" id="sloganTextE">EASY</div>
+            <div class="col setTextT" id="sloganTextT">TRUSTWORTHY</div>
+          </div>
         </div>
+        <br />
         <h3>WITH</h3>
         <h1><b>JOE PUREWAL</b></h1>
         <h3>MORTGAGES</h3>
@@ -94,7 +96,7 @@
       <section class="homeReviewLeft boxAll">
         <div class="boxBody">
           <div class="boxReviewLeft">
-            <img src="images/house.jpeg">
+            <img class="img-fluid" src="images/house.jpeg">
           </div>
         </div>
       </section>
@@ -113,7 +115,7 @@
         <div class="boxBody">
           <div class="boxRatesAdLeft">
             <h2>Joe Purewal & Associates</h2>
-            <p>Direct: (905) 330-6090 | Office:: (905) 281-3555</p>
+            <p>Direct: (905) 330-6090 | Office: (905) 281-3555</p>
             <p><a href="#testimonials">See what our clients think!</a></p>
           </div>
         </div>
@@ -141,92 +143,23 @@
         </div>
       </section>
 
-      <section class="homeRatesCompareLeft boxAll">
-        <div class="boxBody">
-          <div class="boxRatesCompareLeft">
-            <p>call/contact content goes here</p>
-          </div>
-        </div>
-      </section>
-      <section class="homeRatesCompareRight boxAll">
-        <div class="boxBody">
-          <div class="boxRatesCompareRight">
-            <p>call/contact content goes here</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="homeRatesWidgetLeft boxAll">
-        <div class="boxBody">
-          <div class="boxRatesWidgetLeft">
-            <p>rate content goes here</p>
-          </div>
-        </div>
-      </section>
-      <section class="homeRatesWidgetRight boxAll">
-        <div class="boxBody">
-          <div class="boxRatesWidgetRight">
-            <p>rate description content goes here</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="homeBlogLeft boxAll">
-        <div class="boxBody">
-          <div class="boxBlogLeft">
-            <p>blog content goes here</p>
-          </div>
-        </div>
-      </section>
-      <section class="homeBlogRight boxAll">
-        <div class="boxBody">
-          <div class="boxBlogRight">
-            <p>blog content goes here</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="homeMortgageRemLeft boxAll">
-        <div class="boxBody">
-          <div class="boxMortgageRemLeft">
-            <p>mortgage reminder content goes here</p>
-          </div>
-        </div>
-      </section>
-      <section class="homeMortgageRemRight boxAll">
-        <div class="boxBody">
-          <div class="boxMortgageRemRight">
-            <p>mortgage reminder content goes here</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="homeExtraAreaLeft boxAll">
-        <div class="boxBody">
-          <div class="boxExtraAreaLeft">
-            <p>
-              any extra content needed goes here
-            </p>
-          </div>
-        </div>
-      </section>
-      <section class="homeExtraAreaRight boxAll">
-        <div class="boxBody">
-          <div class="boxExtraAreaRight">
-            <p>
-              any extra content needed goes here
-            </p>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <footer class="footer">
-      151 City Centre Drive, Suite 601, Mississauga, ON, L5B 1M7
-      <br />
-      Brokerage # 10801 <span style="color: #d8ae4d;">|</span>
-      F: 1 888 529 3144 <span style="color: #d8ae4d;">|</span>
-      E: documents@joepurewal.ca
+    <footer class="footer row">
+      <div class="col">
+        Joe Purewal & Associates
+        <br />
+        Brokerage #10801
+      </div>
+      <div class="col">
+        <p>151 City Centre Drive, Suite 601</p>
+        <p>Mississauga, ON, L5B 1M7</p>
+        <p>Direct: (905) 330-6090 <span style="color: #d8ae4d;">|</span> Office: (905) 281-3555</p>
+        <p>Fax: 1-888-529-3144</p>
+        <p>Email: info@joepurewal.ca</p>
+      </div>
+      <div class="col">
+      </div>
+      <div class="col">
+      </div>
     </footer>
   </div>
 </body>
