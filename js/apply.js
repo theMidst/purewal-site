@@ -1,5 +1,5 @@
 function buttonToContactInfo () {
-    window.location.assign("../apply/contact-info.html")
+    window.location.assign("../apply/contactinfo.html")
 }
 
 function changeArrowColor() {
