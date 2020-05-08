@@ -28,6 +28,8 @@ html.is-leaving .transition-fade {
     border-radius: 15px;
     max-width: 550px;
     box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
+    height: 532px;
+    max-height: 532px;
 }
 
 .spacingBox {
@@ -63,6 +65,16 @@ html.is-leaving .transition-fade {
 
 .btn {
     margin-bottom: 5px;
+}
+
+.arrow-change {
+    color: #042557;
+}
+
+#arrow-lable {
+    font-size: 0.75em;
+    color: grey;
+    margin: 0;
 }
 
 @media screen and (orientation: portrait) {

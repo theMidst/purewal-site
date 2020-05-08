@@ -16,3 +16,13 @@ h2 {
 .btn-border {
     border: solid rgb(206, 212, 218) 1px;
 }
+
+@media screen and (orientation: portrait) {
+    body {
+        max-width: auto;
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+        margin: 10px;
+    }
+}

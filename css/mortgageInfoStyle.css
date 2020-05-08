@@ -1,6 +1,4 @@
-body{
-    margin: 5px;
-}
+
 
 .container {
     border: solid rgb(161, 158, 158) 2px;
@@ -8,6 +6,8 @@ body{
     max-width: 550px;
     box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
     padding: 20px;
+    height: 532px;
+    max-height: 532px;
 }
 
 .spacingBox {
@@ -40,6 +40,27 @@ body{
 }
 
 .active {
-    background-color: rgb(75, 181, 67) !important;
+    background-color: #042557 !important;
+    color:white;
     box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
   }
+
+  @media screen and (orientation: portrait) {
+    body {
+        max-width: auto;
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+        margin: 10px;
+    }
+
+    .btn-border {
+        border: solid rgb(206, 212, 218) 1px;
+        padding: 5px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    
+}
+
