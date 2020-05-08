@@ -28,10 +28,16 @@ html.is-leaving .transition-fade {
     border-radius: 15px;
     max-width: 550px;
     box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
+    height: 532px;
+    max-height: 532px;
+}
+
+.spacingBox {
+    height: 30px;
 }
 
 .card {
-    height: 150px;
+    height: auto;
     max-width: 500px;
     color: black;
     background: white;
@@ -39,13 +45,17 @@ html.is-leaving .transition-fade {
     padding: 10px;
 }
 
-.card-title {
-    font-size: 1.2em;
+.card-body {
+    font-size: 1.25em;
 }
 
 .card-img {
     max-width: 250px;
     max-height: auto;
+}
+
+.adjust-img {
+    margin-top: 25px;
 }
 
 .card:hover {
@@ -55,6 +65,16 @@ html.is-leaving .transition-fade {
 
 .btn {
     margin-bottom: 5px;
+}
+
+.arrow-change {
+    color: #042557;
+}
+
+#arrow-lable {
+    font-size: 0.75em;
+    color: grey;
+    margin: 0;
 }
 
 @media screen and (orientation: portrait) {
@@ -67,7 +87,8 @@ html.is-leaving .transition-fade {
     }
 
     .card-img {
-        max-width: 40%;  
+        max-width: 40%;
+        margin-top: 25px;  
     }
     
     .applicationList {
@@ -80,7 +101,7 @@ html.is-leaving .transition-fade {
     }
 
     .spacingBox {
-        height: 50px;
+        height: 30px;
     }
 
     body {
@@ -88,6 +109,7 @@ html.is-leaving .transition-fade {
         display: inline-block;
         vertical-align: middle;
         float: none;
+        margin: 10px;
     }
 }
 

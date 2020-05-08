@@ -1,3 +1,28 @@
 h2 {
     text-align: center;
 }
+
+.container {
+    border: solid rgb(161, 158, 158) 2px;
+    border-radius: 15px;
+    max-width: 550px;
+    box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
+}
+
+.spacingBox {
+    height: 30px;
+}
+
+.btn-border {
+    border: solid rgb(206, 212, 218) 1px;
+}
+
+@media screen and (orientation: portrait) {
+    body {
+        max-width: auto;
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+        margin: 10px;
+    }
+}

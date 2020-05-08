@@ -1,12 +1,19 @@
 <!DOCTYPE html>
+<!--
+    Created on : 2020-01-17, 8:33 PM
+    Author     : Kent Nippard, Andrew McEachren
+-->
+
 <html>
+
 <head>
   <title>Joe Purewal</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="../css/applyStyle.css">
-  <script src="../js/ApplyScript.js"></script>
+  <script src="../js/apply-script.js"></script>
+  <script src="../js/mortgage-info-script.js"></script>
   <script src="../js/jquery-3.4.1.js"></script>
   <script src="https://kit.fontawesome.com/47f983aaf6.js" crossorigin="anonymous"></script>
 
@@ -14,9 +21,7 @@
 
 <body>
   <section class="header text-center">
-    <h1>JOE PUREWAL</h1>
-    <h3>GET SET</h3>
-    <h3>Mortgage Application</h3>
+    <img class="img-fluid" src="../images/JP-328×89-REVERSE-Web-Banner-Black-crop.png">
   </section>
   <hr color="#d8ae4d">
 
@@ -29,18 +34,53 @@
     <div class="card mb-2 mt-3 mx-auto" onclick="buttonToContactInfo()">
       <div class="row no-gutters">
         <div class="col text-center">
-          <img src="../images/location.png" class="card-img" alt="temp">
+          <span style="font-size: 4em; color: rgb(216, 174, 77);">
+            <i class="fas fa-mobile-alt adjust-img"></i>
+          </span>
         </div>
         <div class="col-5">
           <div class="card-body">
-            <h6 class="card-title">Step 1:</h6>
-            <h5 class="card-title">Contact Information</h5>
+            <h5 class="card-title">
+              <span style="color: grey">Step 1:</span>
+              <br>
+              Contact Information
+            </h5>
           </div>
         </div>
         <div class="col text-center">
-          <span style="font-size: 5em; color: rgb(161, 158, 158);">
-            <i class="far fa-arrow-alt-circle-right"></i>
+          <span style="font-size: 4em; color: rgb(187, 187, 187);">
+            <div id="clickedID1">
+              <i class="far fa-arrow-alt-circle-right adjust-img"></i>
+            </div>
           </span>
+          <p id="arrow-lable">Required</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-2 mx-auto" onclick="buttonToMortgageInfo()">
+      <div class="row no-gutters">
+        <div class="col text-center">
+          <span style="font-size: 4em; color: rgb(216, 174, 77);">
+            <i class="fas fa-home adjust-img"></i>
+          </span>
+        </div>
+        <div class="col-5">
+          <div class="card-body">
+            <h5 class="card-title">
+              <span style="color: grey">Step 2:</span>
+              <br>
+              Mortgage Information
+            </h5>
+          </div>
+        </div>
+        <div class="col text-center">
+          <span style="font-size: 4em; color: rgb(187, 187, 187);">
+            <div id="clickedID2">
+              <i class="far fa-arrow-alt-circle-right adjust-img"></i>
+            </div>
+          </span>
+          <p id="arrow-lable">Required</p>
         </div>
       </div>
     </div>
@@ -48,43 +88,33 @@
     <div class="card mb-2 mx-auto">
       <div class="row no-gutters">
         <div class="col text-center">
-          <img src="../images/location.png" class="card-img" alt="...">
+          <span style="font-size: 4em; color: rgb(216, 174, 77);">
+            <i class="fas fa-id-card adjust-img"></i>
+          </span>
         </div>
         <div class="col-5">
           <div class="card-body">
-            <h6 class="card-title">Step 2:</h6>
-            <h5 class="card-title">Mortgage Information</h5>
+            <h5 class="card-title">
+              <span style="color: grey">Step 3:</span>
+              <br>
+              Review Terms and Conditions
+            </h5>
           </div>
         </div>
         <div class="col text-center">
-          <span style="font-size: 5em; color: rgb(161, 158, 158);">
-            <i class="far fa-arrow-alt-circle-right"></i>
+          <span style="font-size: 4em; color: rgb(187, 187, 187);">
+            <div id="clickedID3">
+              <i class="far fa-arrow-alt-circle-right adjust-img"></i>
+            </div>
           </span>
+          <p id="arrow-lable">Required</p>
         </div>
       </div>
     </div>
 
-    <div class="card mb-2 mx-auto">
-      <div class="row no-gutters">
-        <div class="col text-center">
-
-          <img src="../images/location.png" class="card-img" alt="...">
-        </div>
-        <div class="col-5">
-          <div class="card-body">
-            <h6 class="card-title">Step 3:</h6>
-            <h5 class="card-title">Review Terms and Conditions</h5>
-          </div>
-        </div>
-        <div class="col text-center">
-          <span style="font-size: 5em; color: rgb(161, 158, 158);">
-            <i class="far fa-arrow-alt-circle-right"></i>
-          </span>
-        </div>
-      </div>
-    </div>
     <div class="text-center">
-      <button type="submit" class="btn btn-outline-dark btn-lg text-center">Submit Application</button>
+      <button type="submit" class="btn btn-outline-dark btn-lg text-center" onclick="changeArrowColor()">Submit
+        Application</button>
     </div>
   </section>
 
