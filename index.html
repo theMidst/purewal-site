@@ -14,10 +14,10 @@
 </head>
 <body>
   <div class="container-fluid">
-    <!-- ====================== NAV BAR ========================== -->
-    <nav id="topNav" class="navbar sticky-top navbar-expand-lg navbar-light navbar-custom row">
+    <!-- ================== NAV BAR ================== -->
+    <nav id="topNav" class="navbar shadow sticky-top navbar-expand-lg navbar-light navbar-custom row">
       <a class="navbar-brand col" href="index.html">
-        <img class="img-fluid" id="brand" src="images/JP-328×89-REVERSE-Web-Banner-Black.png" alt="">
+        <img class="img-fluid" id="brand" src="images/JP-328×89-REVERSE-Web-Banner-Black.png" alt="Joe Purewal Logo">
         <span class="sr-only">(current)</span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,40 +63,46 @@
     <section class="homeGrid">
 
       <section class="homeBanner">
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 13" preserveAspectRatio="xMidYMax slice">
-          <polygon points="100,1 200,12 0,12" style="fill:none;stroke:#d8ae4d;stroke-width:1" />
-          <text x="88.5" y="11" font-family="Times New Roman" font-size="10" fill="black">GET</text>
-        </svg> -->
         <svg class="house" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 20" preserveAspectRatio="xMidYMax slice">
-          <!-- <polygon points="100,1 200,12 0,12" style="fill:none;stroke:#d8ae4d;stroke-width:1" /> -->
-          <line x1="0" y1="16" x2="100.1" y2="1" />
+          <line x1="0" y1="16" x2="100.2" y2="1" />
           <line x1="0" y1="16" x2="80" y2="16" />
-          <line x1="200" y1="16" x2="99.9" y2="1" />
+          <line x1="200" y1="16" x2="99.8" y2="1" />
           <line x1="200" y1="16" x2="120" y2="16" />
-          <text x="83" y="18.7" font-family="Times New Roman" font-size="16" fill="black">GET</text>
+          <text x="50%" text-anchor="middle" y="18.7" font-size="10">GET</text>
         </svg>
         <div class="setTextAnim">
-          <div class="row setLetters">
+          <div class="row no-gutters setLetters">
             <div class="col setTextS" id="sloganLetter">S</div>
             <div class="col setTextE" id="sloganLetter">E</div>
             <div class="col setTextT" id="sloganLetter">T</div>
           </div>
-          <div class="row setSubtitle">
-            <div class="col setTextS" id="sloganTextS">SAFE</div>
-            <div class="col setTextE" id="sloganTextE">EASY</div>
-            <div class="col setTextT" id="sloganTextT">TRUSTWORTHY</div>
+          <div class="row no-gutters setSubtitle">
+            <!-- <div class="w-100"></div> -->
+            <div class="col setTextS">SAFE</div>
+            <div class="col setTextE">EASY</div>
+            <div class="col setTextT">TRUSTWORTHY</div>
           </div>
         </div>
         <br />
-        <h3>WITH</h3>
-        <h1><b>JOE PUREWAL</b></h1>
-        <h3>MORTGAGES</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 11" preserveAspectRatio="xMidYMax slice">
+          <line x1="0" y1="4.5" x2="78" y2="4.5" />
+          <line x1="200" y1="4.5" x2="122" y2="4.5" />
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="semi-bold">WITH</text>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 30" preserveAspectRatio="xMidYMax slice">
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="22" font-weight="semi-bold">JOE PUREWAL</text>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 11" preserveAspectRatio="xMidYMax slice">
+          <line x1="0" y1="4.5" x2="57" y2="4.5" />
+          <line x1="200" y1="4.5" x2="143" y2="4.5" />
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="semi-bold">MORTGAGES</text>
+        </svg>
       </section>
 
       <section class="homeReviewLeft boxAll">
         <div class="boxBody">
           <div class="boxReviewLeft">
-            <img class="img-fluid" src="images/house.jpeg">
+            <img class="img-fluid" src="images/house.jpeg" alt="Home">
           </div>
         </div>
       </section>
@@ -142,25 +148,34 @@
           </div>
         </div>
       </section>
+    </section>
+  </div>
 
-    <footer class="footer row">
-      <div class="col">
-        Joe Purewal & Associates
-        <br />
-        Brokerage #10801
+  <!-- Footer (note: need row class to prevent padding from parent .container-fluid) -->
+  <footer>
+    <div class="footer row">
+      <!-- small devices combine all columns into 1 -->
+      <div class="col-lg-6 col-sm-12">
+        <p><b>Joe Purewal & Associates</b></p>
+        <p>Brokerage #10801</p>
       </div>
-      <div class="col">
+      <div class="col-lg-6 col-sm-12">
         <p>151 City Centre Drive, Suite 601</p>
         <p>Mississauga, ON, L5B 1M7</p>
+      </div>
+    </div>
+    <div class="footer row">
+      <div class="col">
         <p>Direct: (905) 330-6090 <span style="color: #d8ae4d;">|</span> Office: (905) 281-3555</p>
         <p>Fax: 1-888-529-3144</p>
         <p>Email: info@joepurewal.ca</p>
       </div>
-      <div class="col">
-      </div>
-      <div class="col">
-      </div>
-    </footer>
-  </div>
+    </div>
+    <!-- columns for social media links, etc. -->
+    <!-- <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div> -->
+  </footer>
 </body>
 </html>

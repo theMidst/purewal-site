@@ -15,41 +15,54 @@
 .homeExtraAreaLeft { grid-area: homeExtraAreaLeft; }
 .homeExtraAreaRight { grid-area: homeExtraAreaRight; }
 
-/* todo: split into lower content & header / banner content boxes */
+.homeGrid {
+  /* set max width of all elements within main grid */
+  max-width: 1050px;
+  /* center all elements within main grid */
+  margin: auto;
+}
+
+/* box for all content below banner, excluding footer */
 .boxAll {
   border-bottom: 1px solid #d8ae4d;
+}
+/* is set differently in portrait */
+.boxBody {
+  min-height: 300px;
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.boxBody {
-  min-height: 300px;
-}
 
+/* add custom style to navbar */
 .navbar-custom {
   background-color: transparent;
   text-transform: uppercase;
-  font-size: 1.2em;
-  transition: background-color 0.2s, color 0.2s;
+  /* font-size: 1.2em; */
+  transition: background-color 0.35s, color 0.35s;
 }
+/* navbar bg colour after scrolling down from top */
 .navbar-custom.nav-scrolled {
   background-color: #042557;
 }
+/* ensure brand image never appears too large */
+/* #brand {
+  max-width: 375px;
+} */
 
+/* also see portrait mode rules */
 .homeBanner {
   /* max height of banner is defined separately in portrait */
+  /* max width of banner is defined separately in portrait/landscape */
   text-transform: uppercase;
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   border-bottom: 1px solid #d8ae4d;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   width: 100%;
 }
 
-#sloganLetter { grid-area: sloganLetter; font-size: 24vmin; }
-#sloganTextS { grid-area: sloganTextS; }
-#sloganTextE { grid-area: sloganTextE; }
-#sloganTextT { grid-area: sloganTextT; }
+/* fade-in animation settings for S E T text & subtitles */
 .setTextS {
   opacity: 0;
   -webkit-transition: opacity 1.25s ease-in;
@@ -74,77 +87,116 @@
     -o-transition: opacity 2.5s ease-in;
        transition: opacity 2.5s ease-in;
 }
+#sloganLetter {
+  font-size: 20vmin;
+}
 .setTextAnim {
   background-color: rgb(224, 224, 224);
   color: black;
-  background-size: auto;
-  width: 100%;
+  /* width: 100%; */
+  padding: auto;
 }
+
+/* make line height scale better with text (normally too tall) */
 .setLetters {
-  line-height: 25vmin;
+  line-height: 20vmin;  /* different in portrait */
 }
 .setSubtitle {
-    font-size: 3vmin
+  /* make this smaller if subtitle text is taking up too much space */
+  font-size: 3vmin
 }
+/* make text opaque for fade animation */
 .setTextFade {
   opacity: 1;
 }
 
-.house line {
+/* remove default Bootstrap column padding rule */
+/* .col {
+  padding: 0;
+} */
+
+/* style all lines of the banner SVGs */
+line {
   fill: none;
   stroke: #d8ae4d;
-  stroke-width: 2
+  stroke-width: 2;
 }
 
+/* footer element itself */
 footer {
-  font-size: 75%;
+  color: white;
+  background-color: #042557;
+  /* replace default 50px margin-bottom with padding to cover whitespace w/bg */
+  margin-bottom: 0;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+/* actual footer class */
+.footer {
   text-align: center;
-  margin-bottom: 50px;
+  /* width equal to homeGrid width */
+  max-width: 1050px;
+  width: 100%;
+  margin: auto;
 }
 
 @media screen and (orientation: portrait) {
-/* Grid */
-.homeGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-      "homeBanner"
-      "homeReviewLeft"
-      "homeReviewRight"
-      "homeRatesAdLeft"
-      "homeRatesAdRight"
-      "homeCallLeft"
-      "homeCallRight"
-      "homeRatesCompareLeft"
-      "homeRatesCompareRight"
-      "homeRatesWidgetLeft"
-      "homeRatesDescRight"
-      "homeBlogLeft"
-      "homeBlogRight"
-      "homeMortgageRemLeft"
-      "homeMortgageRemRight"
-      "homeExtraAreaLeft"
-      "homeExtraAreaRight"
-  ;
-  gap: 2px;
-  place-items: center; /* allows background to fill entire area */
+  /* Grid */
+  .homeGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "homeBanner"
+        "homeReviewLeft"
+        "homeReviewRight"
+        "homeRatesAdLeft"
+        "homeRatesAdRight"
+        "homeCallLeft"
+        "homeCallRight"
+        "homeRatesCompareLeft"
+        "homeRatesCompareRight"
+        "homeRatesWidgetLeft"
+        "homeRatesDescRight"
+        "homeBlogLeft"
+        "homeBlogRight"
+        "homeMortgageRemLeft"
+        "homeMortgageRemRight"
+        "homeExtraAreaLeft"
+        "homeExtraAreaRight"
+    ;
+    gap: 2px;
+    place-items: center; /* allows background to fill entire area */
   }
   /* End of portrait grid */
+
+  #sloganLetter {
+    font-size: 30vmin;
+  }
+  .setTextAnim {
+    background-color: rgb(224, 224, 224);
+    color: black;
+    background-size: auto;
+    width: 100%;
+  }
+  .setLetters {
+    line-height: 30vmin;
+    padding: auto;
+  }
+  .setSubtitle {
+    font-size: 3.5vmin
+  }
   
   .boxBody {
-    min-height: 250px;
-    /* max-height: 400px; */
-    max-width: 500px; /* enforces "boxed" width for body content */
-    /* vertically center content by applying flex to boxBody elements! */
-    display: flex;
-    /* justify-content: center; */
-    text-align: center;
-    align-items: center;
-  }
+    /* min-height: 250px; */
 
-  .homeBanner {
-      max-height: 540px;
+    /* enforces "boxed" width for body content */
+    max-width: 500px;
+    /* vertically center content w/flex & align-items */
+    display: flex;
+    align-items: center;
+    /* horizontally center content */
+    text-align: center;
   }
 }
 
@@ -168,11 +220,12 @@ footer {
     gap: 2px;
     place-items: center; /* allows background to fill entire area */
   }
+
+  .homeBanner {
+    max-width: 1050px;
+  }
   
   .boxBody {
-    /* min-height: 400px;
-    max-height: 500px; */
-    /* max-height: 400px; */
     max-width: 500px; /* enforces "boxed" width for body content */
     /* vertically center content by applying flex to boxBody elements! */
     display: flex;
@@ -182,9 +235,17 @@ footer {
   }
 }
 
-@media screen and (orientation: landscape) and (max-width: 768px) {
+/* @media screen and (orientation: landscape) and (max-width: 1490px) {
   #brand {
-    width: 40%;
-    height: 40%;
+    max-width: 40%;
+    max-height: 40%;
+  }
+} */
+
+/* MOBILE landscape mode */
+@media screen and (orientation: landscape) and (max-width: 750) {
+  #brand {
+    max-width: 20%;
+    max-height: 20%;
   }
 }

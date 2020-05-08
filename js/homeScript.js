@@ -9,14 +9,12 @@
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       if (!x.className.includes("navbar-dark")) {
         /* invert navbar and its contents from dark to light & fade in */
-        // x.className = x.className.replace(" bg-primary", "");
         x.className = x.className.replace("navbar-light", "navbar-dark");
         document.getElementById("brand").src = bannerLogoNameLight;
         x.className += " nav-scrolled";
       }
     }
     else {
-      // x.className += " bg-primary";
       x.className = x.className.replace("navbar-dark", "navbar-light");
       document.getElementById("brand").src = bannerLogoNameDark;
       x.className = x.className.replace(" nav-scrolled", "");
@@ -41,7 +39,7 @@
     textT.className += " setTextFade";
   }
 
-  // attach the function to onscroll
+  // set up SET text animation & navbar scroll functions
   window.onscroll = function() { this.scrollFunction()} ;
   window.onload = function() { this.onLoadFunction() };
 // });
