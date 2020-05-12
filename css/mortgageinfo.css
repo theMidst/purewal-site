@@ -1,6 +1,8 @@
+h2 {
+    text-align: center;
+}
 
-
-.container {
+.container-fluid {
     border: solid rgb(161, 158, 158) 2px;
     border-radius: 15px;
     max-width: 550px;
@@ -10,20 +12,16 @@
     max-height: 532px;
 }
 
-.spacingBox {
-    height: 30px;
-}
-
 .card-style-top{
-    padding: 20px;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    padding: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .card-style-bottom{
-    padding: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .btn-border {
@@ -54,11 +52,16 @@
         margin: 10px;
     }
 
-    .btn-border {
-        border: solid rgb(206, 212, 218) 1px;
-        padding: 5px;
-        padding-left: 30px;
-        padding-right: 30px;
+    .card-style-top{
+        padding: 10px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    
+    .card-style-bottom{
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 
     
