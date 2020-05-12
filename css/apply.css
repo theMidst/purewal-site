@@ -32,10 +32,6 @@ html.is-leaving .transition-fade {
     max-height: 532px;
 }
 
-.spacingBox {
-    height: 30px;
-}
-
 .card {
     height: auto;
     max-width: 500px;
