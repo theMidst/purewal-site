@@ -1,3 +1,5 @@
+/* RED CSS SIMPLY CHANGES THE FOLLOWING TWO RULES FROM GOLD TO RED. */
+/* f50a0a d31717 ...and old: ca1111ea e02222 */
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -28,7 +30,7 @@ body {
 
 /* Colour all vertical bars to theme colour */
 .vertical-bar {
-  color: #d8ae4d;
+  color: #d31717;
 }
 
 /* box for all content below banner, excluding footer 
@@ -87,7 +89,7 @@ body {
   /* font-family: 'PT Serif', serif; */
   font-family: 'Libre Baskerville', serif;
   /* font-weight: bold; */
-  border-bottom: 1px solid #d8ae4d;
+  border-bottom: 1px solid #d31717;
   padding-bottom: 20px;
   width: 100%;
 }
@@ -148,7 +150,7 @@ body {
 /* style all lines of the banner SVGs */
 line {
   fill: none;
-  stroke: #d8ae4d;
+  stroke: #d31717;
   stroke-width: 2;
 }
 
@@ -207,7 +209,7 @@ footer {
 
   /* box for all content, portrait only */
   .boxAll:not(:last-child) {
-    border-bottom: 1px solid #d8ae4d;
+    border-bottom: 1px solid #d31717;
   }
 
   #sloganLetter {
@@ -266,10 +268,10 @@ footer {
 
   /* don't display bottom-border on bottom row */
   .boxAll:not(:nth-last-child(-n+2)) {
-    border-bottom: 1px solid #d8ae4d;
+    border-bottom: 1px solid #d31717;
   }
   /* .boxAll:not(:last-child) {
-    border-bottom: 1px solid #d8ae4d;
+    border-bottom: 1px solid #d31717;
   } */
 
   .homeBanner {

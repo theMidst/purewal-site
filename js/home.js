@@ -6,18 +6,24 @@
   var bannerLogoNameDark = "images/JP-328×89-REVERSE-Web-Banner-Black-crop.png";
   function scrollFunction() {
     var x = document.getElementById("topNav");
+    // if scrolled away from the top
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       if (!x.className.includes("navbar-dark")) {
         /* invert navbar and its contents from dark to light & fade in */
         x.className = x.className.replace("navbar-light", "navbar-dark");
         document.getElementById("brand").src = bannerLogoNameLight;
         x.className += " nav-scrolled";
+        // add a shadow
+        x.className += " shadow-lg";
       }
     }
+    // else (scrolled to the top)
     else {
       x.className = x.className.replace("navbar-dark", "navbar-light");
       document.getElementById("brand").src = bannerLogoNameDark;
       x.className = x.className.replace(" nav-scrolled", "");
+      // remove the shadow
+      x.className = x.className.replace(" shadow-lg", "");
     }
   }
 
