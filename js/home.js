@@ -1,52 +1,114 @@
+/* === WINDOW LOAD === */
+
+// animates the S E T text on window load
+function animateSetText() {
+  // animate the S E T text by applying fade transitions to each letter & subtitle
+  let textS = document.getElementsByClassName("setTextS")[0];
+  textS.className += " setTextFade";
+  textS = document.getElementsByClassName("setTextS")[1];
+  textS.className += " setTextFade";
+
+  let textE = document.getElementsByClassName("setTextE")[0];
+  textE.className += " setTextFade";
+  textE = document.getElementsByClassName("setTextE")[1];
+  textE.className += " setTextFade";
+  
+  let textT = document.getElementsByClassName("setTextT")[0];
+  textT.className += " setTextFade";
+  textT = document.getElementsByClassName("setTextT")[1];
+  textT.className += " setTextFade";
+}
+
+// do all necessary actions at window load
+window.onload = function() {
+  animateSetText(); // animate the S E T text
+};
+
+
+/* === WINDOW ONSCROLL === */
+
+// When the user scrolls down 20px from the top of the document, show the nav bg
+// When the user scrolls to the top of the page, hide the nav bg (to show the banner)
+const bannerLogoNameLight = "images/JP-328×89-REVERSE-Web-Banner-crop.png";
+const bannerLogoNameDark = "images/JP-328×89-REVERSE-Web-Banner-Black-crop.png";
+function scrollFunction() {
+  // get the navbar reference by ID
+  let navbar = document.getElementById("topNav");
+  // get the user's currently-scrolled distance from the top
+  let scrollDistance = window.pageYOffset;
+
+  // if scrolled away from the top
+  if (scrollDistance > 0) {
+    // if dark class is not yet applied
+    if (navbar.classList.contains("navbar-light")) {
+      navbar.classList.remove("navbar-light");  // invert colour scheme
+      navbar.classList.add("navbar-dark");      // invert colour scheme
+      document.getElementById("brand").src = bannerLogoNameLight; // invert logo
+      navbar.classList.add("nav-scrolled"); // trigger the fade in
+      navbar.classList.add("shadow-lg");  // add a shadow
+    }
+  }
+  // else (scrolled to the top)
+  else {
+    navbar.classList.remove("navbar-dark");
+    navbar.classList.add("navbar-light");
+    document.getElementById("brand").src = bannerLogoNameDark;
+    navbar.classList.remove("nav-scrolled");
+    navbar.classList.remove("shadow-lg"); // remove the shadow
+  }
+}
+
+// navbar scroll function for internet explorer browsers
+function ieScrollFunction() {
+  // get the navbar reference by ID
+  let navbar = document.getElementById("topNav");
+  let navOffset = navbar.offsetTop; // ruins nav scroll when used in if below ("scrollDistance > navOffset")
+
+  // get IE to scroll better: https://stackoverflow.com/questions/2717252/document-body-scrolltop-is-always-0-in-ie-even-when-scrolling
+  let scrollDistance = typeof window.pageYOffset != 'undefined'? window.pageYOffset: document.documentElement.scrollTop? document.documentElement.scrollTop: document.body.scrollTop? document.body.scrollTop:0;
+
+  // if scrolled away from the top
+  if (scrollDistance > navOffset) {
+    // if dark class is not yet applied
+    if (navbar.classList.contains("navbar-light")) {
+      navbar.classList.remove("navbar-light");  // invert colour scheme
+      navbar.classList.add("navbar-dark");      // invert colour scheme
+      document.getElementById("brand").src = bannerLogoNameLight; // invert logo
+      navbar.classList.add("nav-scrolled"); // trigger the fade in
+      navbar.classList.add("shadow-lg");  // add a shadow
+      navbar.classList.add("sticky");     // sticky-top alternative (doesn't work in IE)
+    }
+  }
+  // else (scrolled to the top)
+  else {
+    navbar.classList.remove("navbar-dark");
+    navbar.classList.add("navbar-light");
+    document.getElementById("brand").src = bannerLogoNameDark;
+    navbar.classList.remove("nav-scrolled");
+    // remove the shadow
+    navbar.classList.remove("shadow-lg");
+    navbar.classList.remove("sticky");    // sticky-top alternative (doesn't work in IE)
+  }
+}
+
+// if user is on IE11 or earlier, use non-bootstrap sticky navbar code
+var browserIsIE = false;  // set this true if using IE (remove if never used)
+if (window.document.documentMode) {
+  // align nav with rest of body by adding padding equal to size of navbar (Bootstrap takes care of this on other browsers)
+  document.getElementsByClassName("content")[0].style.paddingTop = document.getElementById("topNav").style.height;
+  // set the internet explorer-friendly window scroll function
+  window.onscroll = function() { this.ieScrollFunction() };
+  browserIsIE = true; // flag that the user's browser is IE
+}
+else {
+  // set the regular scroll function for the Bootstrap navbar
+  window.onscroll = function() { this.scrollFunction() };
+  // assign sticky-top Bootstrap class to the navbar
+  let navbar = document.getElementById("topNav");
+  navbar.classList.add("sticky-top");
+}
+
 // $(document).ready(function() {
-
-  // When the user scrolls down 20px from the top of the document, show the nav bg
-  // When the user scrolls to the top of the page, hide the nav bg (to show the banner)
-  var bannerLogoNameLight = "images/JP-328×89-REVERSE-Web-Banner-crop.png";
-  var bannerLogoNameDark = "images/JP-328×89-REVERSE-Web-Banner-Black-crop.png";
-  function scrollFunction() {
-    var x = document.getElementById("topNav");
-    // if scrolled away from the top
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      if (!x.className.includes("navbar-dark")) {
-        /* invert navbar and its contents from dark to light & fade in */
-        x.className = x.className.replace("navbar-light", "navbar-dark");
-        document.getElementById("brand").src = bannerLogoNameLight;
-        x.className += " nav-scrolled";
-        // add a shadow
-        x.className += " shadow-lg";
-      }
-    }
-    // else (scrolled to the top)
-    else {
-      x.className = x.className.replace("navbar-dark", "navbar-light");
-      document.getElementById("brand").src = bannerLogoNameDark;
-      x.className = x.className.replace(" nav-scrolled", "");
-      // remove the shadow
-      x.className = x.className.replace(" shadow-lg", "");
-    }
-  }
-
-  function onLoadFunction() {
-    // Animate the S E T text
-    var textS = document.getElementsByClassName("setTextS")[0];
-    textS.className += " setTextFade";
-    var textS = document.getElementsByClassName("setTextS")[1];
-    textS.className += " setTextFade";
-
-    var textE = document.getElementsByClassName("setTextE")[0];
-    textE.className += " setTextFade";
-    var textE = document.getElementsByClassName("setTextE")[1];
-    textE.className += " setTextFade";
-    
-    var textT = document.getElementsByClassName("setTextT")[0];
-    textT.className += " setTextFade";
-    var textT = document.getElementsByClassName("setTextT")[1];
-    textT.className += " setTextFade";
-  }
-
-  // set up SET text animation & navbar scroll functions
-  window.onscroll = function() { this.scrollFunction()} ;
-  window.onload = function() { this.onLoadFunction() };
+//   // prevent text from being selectable. Don't want to see cursor either
+//   // $("text").attr("onselectstart","return false");
 // });
-

@@ -4,75 +4,80 @@
   <title>Joe Purewal</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=PT+Serif&family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" media="all" type="text/css" href="bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" media="all" type="text/css" href="css/home.css">
+  <link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="all" type="text/css" >
+  <link href="css/home.css" rel="stylesheet" media="all" type="text/css" >
 </head>
 <body>
-  <div class="container-fluid">
-    <!-- ================== NAV BAR ================== -->
-    <!-- <div id="topNav"> -->
-      <!-- utility area -->
-      <!-- <nav id="utility-nav" class="navbar navbar-light row">
-        <a href="#">Call now!</a>
-      </nav> -->
-      
-      <nav id="topNav" class="navbar sticky-top navbar-expand-lg navbar-light navbar-custom row">
-        <a class="navbar-brand col" href="index.html">
-          <img class="img-fluid" id="brand" src="images/JP-328×89-REVERSE-Web-Banner-Black.png" alt="Joe Purewal Logo">
-          <span class="sr-only">(current)</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Rates</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Tools
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item disabled" href="#">Education</a>
-                <a class="dropdown-item" href="mortgage-payment-calculator/index.html">Mortgage Payment Calculator</a>
-                <a class="dropdown-item disabled" href="#">CMHC Calculator</a>
-                <a class="dropdown-item disabled" href="#">Land Transfer Tax Calc.</a>
-                <a class="dropdown-item disabled" href="#">Affordability Calculator</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" target="_blank" href="https://www.cmhc-schl.gc.ca/">CMHC</a>
-                <a class="dropdown-item" target="_blank" href="http://www.genworth.ca/en/index.aspx">Genworth</a>
-                <a class="dropdown-item" target="_blank" href="https://www.canadaguaranty.ca/">Canada Guaranty</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Mortgages</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="apply/apply.html">Apply Now</a>
-            </li>
-          </ul>
+  <!-- ================== NAV BAR ================== -->
+  <!-- <div id="topNav"> -->
+    <!-- utility area -->
+    <!-- <nav id="utility-nav" class="navbar navbar-light row">
+      <a href="#">Call now!</a>
+    </nav> -->
+    
+    <!-- Note: - no-gutters prevents need for container-fluid; otherwise navbar too wide, creates H-scroller 
+               - sticky-top is added by JS if browser is not IE. Otherwise, applies custom sticky code -->
+    <nav id="topNav" class="navbar navbar-expand-lg navbar-light navbar-custom row no-gutters">
+      <a class="navbar-brand col" href="index.html">
+        <img class="img-fluid" id="brand" src="images/JP-328×89-REVERSE-Web-Banner-Black.png" alt="Joe Purewal Logo">
+        <span class="sr-only">(current)</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link text-uppercase disabled" href="#" tabindex="-1" aria-disabled="true">Rates</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link text-uppercase dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tools
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item disabled" href="#">Education</a>
+              <a class="dropdown-item" href="mortgage-payment-calculator/index.html">Mortgage Payment Calculator</a>
+              <a class="dropdown-item disabled" href="#">CMHC Calculator</a>
+              <a class="dropdown-item disabled" href="#">Land Transfer Tax Calc.</a>
+              <a class="dropdown-item disabled" href="#">Affordability Calculator</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" target="_blank" href="https://www.cmhc-schl.gc.ca/">CMHC</a>
+              <a class="dropdown-item" target="_blank" href="http://www.genworth.ca/en/index.aspx">Genworth</a>
+              <a class="dropdown-item" target="_blank" href="https://www.canadaguaranty.ca/">Canada Guaranty</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase disabled" href="#" tabindex="-1" aria-disabled="true">Mortgages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase disabled" href="#" tabindex="-1" aria-disabled="true">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase disabled" href="#" tabindex="-1" aria-disabled="true">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="apply/apply.html">Apply Now</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  <!-- </div> -->
+  
+  <div class="container-fluid home-grid content">
+
+    <section class="row">
+      <section class="home-banner col col-sm-12">
+        <div class="house"><!-- If I don't wrap in a div, SVG goes INSANE. Probably col screwing it up -->
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 20">
+            <line x1="0" y1="16" x2="100.2" y2="1"></line>
+            <line x1="0" y1="16" x2="80" y2="16"></line>
+            <line x1="200" y1="16" x2="99.8" y2="1"></line>
+            <line x1="200" y1="16" x2="120" y2="16"></line>
+            <text x="50%" text-anchor="middle" y="17" font-size="10">GET</text>
+          </svg>
         </div>
-      </nav>
-    <!-- </div> -->
-
-    <section class="homeGrid">
-
-      <section class="homeBanner">
-        <svg class="house" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 20" preserveAspectRatio="xMidYMax slice">
-          <line x1="0" y1="16" x2="100.2" y2="1" />
-          <line x1="0" y1="16" x2="80" y2="16" />
-          <line x1="200" y1="16" x2="99.8" y2="1" />
-          <line x1="200" y1="16" x2="120" y2="16" />
-          <text x="50%" text-anchor="middle" y="18.7" font-size="10">GET</text>
-        </svg>
         <div class="setTextAnim">
           <div class="row no-gutters setLetters">
             <div class="col setTextS" id="sloganLetter">S</div>
@@ -80,117 +85,118 @@
             <div class="col setTextT" id="sloganLetter">T</div>
           </div>
           <div class="row no-gutters setSubtitle">
-            <!-- <div class="w-100"></div> -->
             <div class="col setTextS">SAFE</div>
             <div class="col setTextE">EASY</div>
             <div class="col setTextT">TRUSTWORTHY</div>
           </div>
         </div>
-        <br />
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 12" preserveAspectRatio="xMidYMax slice">
-          <line x1="0" y1="5.5" x2="78" y2="5.5" />
-          <line x1="200" y1="5.5" x2="122" y2="5.5" />
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="semi-bold">WITH</text>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 30" preserveAspectRatio="xMidYMax slice">
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="22" font-weight="semi-bold">JOE PUREWAL</text>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 12" preserveAspectRatio="xMidYMax slice">
-          <line x1="0" y1="5.5" x2="57" y2="5.5" />
-          <line x1="200" y1="5.5" x2="143" y2="5.5" />
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="semi-bold">MORTGAGES</text>
-        </svg>
-      </section>
-
-      <section class="homeReviewLeft boxAll">
-        <div class="boxBody">
-          <div class="boxReviewLeft">
-            <img class="img-fluid" src="images/house.jpeg" alt="Home">
-          </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 13">
+            <line x1="0" y1="5.5" x2="78" y2="5.5"></line>
+            <line x1="200" y1="5.5" x2="122" y2="5.5"></line>
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="semi-bold">WITH</text>
+          </svg>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 36">
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="22" font-weight="semi-bold">JOE PUREWAL</text>
+          </svg>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 13">
+            <line x1="0" y1="5.5" x2="57" y2="5.5"></line>
+            <line x1="200" y1="5.5" x2="143" y2="5.5"></line>
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="semi-bold">MORTGAGES</text>
+          </svg>
         </div>
       </section>
-      <section class="homeReviewRight boxAll">
-        <div class="boxBody">
-          <div class="boxReviewRight">
-            <h2>WHO WE ARE</h2>
-            <p>As part of INVIS, Canada’s largest mortgage brokerage firm, we have spent the last 20 years providing clients with innovative mortgage products that suit their individual needs and objectives. Whether it is arranging a purchase, refinance, debt consolidation, equity take-outs, investment properties, or cash back mortgages, we take pride in offering clients service that is professional and ethical.</p>
-            <!-- Image goes here -->
-            <!-- <img /> -->
-            <p>As a knowledgeable professional team in the mortgage industry, we remain committed to servicing all of our clients' financing needs, offering solutions and helping them on every step of their financial mortgage process.</p>
-            <p>We speak English, Spanish, Filipino and Punjabi!</p>
-          </div>
+    </section>
+
+    <section class="row box-all">
+      <section class="homeReviewLeft box-body col-md-12">
+        <div class="box-review-left">
+          <img class="img-fluid" src="images/house.jpeg" alt="Home">
         </div>
       </section>
+      <section class="homeReviewRight box-body col-md-12">
+        <div class="box-review-right">
+          <h2>WHO WE ARE</h2>
+          <p>As part of INVIS, Canada’s largest mortgage brokerage firm, we have spent the last 20 years providing clients with innovative mortgage products that suit their individual needs and objectives. Whether it is arranging a purchase, refinance, debt consolidation, equity take-outs, investment properties, or cash back mortgages, we take pride in offering clients service that is professional and ethical.</p>
+          <!-- Image goes here -->
+          <!-- <img /> -->
+          <p>As a knowledgeable professional team in the mortgage industry, we remain committed to servicing all of our clients' financing needs, offering solutions and helping them on every step of their financial mortgage process.</p>
+          <p>We speak English, Spanish, Filipino and Punjabi!</p>
+        </div>
+      </section>
+    </section>
 
+    <section class="row box-all">
       <!-- Temp: removed boxall to remove border on bottom-most content blocks -->
-      <section class="homeRatesAdLeft boxAll">
-        <div class="boxBody">
-          <div class="boxRatesAdLeft">
-            <h2>Joe Purewal & Associates</h2>
-            <p>Direct: (905) 330-6090 <span class="vertical-bar">|</span> Office: (905) 281-3555</p>
-            <p><a href="#testimonials">See what our clients think!</a></p>
-          </div>
+      <section class="homeRatesAdLeft box-body col-md-12">
+        <div class="box-rates-ad-left">
+          <h2>Joe Purewal & Associates</h2>
+          <p>Direct: (905) 330-6090 <span class="vertical-bar">|</span> Office: (905) 281-3555</p>
+          <p><a href="#testimonials">See what our clients think!</a></p>
         </div>
       </section>
-      <section class="homeRatesAdRight boxAll">
-        <div class="boxBody">
-          <div class="boxRatesAdRight">
-            <h3>Take advantage of our great rates now!</h3><br />
-            <table id="rates-table" class="table table-striped table-bordered table-primary">
-              <thead class="thead-dark">
-                <tr>
-                  <th colspan="2" scope="col">Rates</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>5 Year Variable</td>
-                  <td><b>2.90%</b></td>
-                </tr>
-                <tr>
-                  <td>1 Year Fixed</td>
-                  <td><b>2.69%</b></td>
-                </tr>
-                <tr>
-                  <td>2 Year Fixed</td>
-                  <td><b>2.69%</b></td>
-                </tr>
-                <tr>
-                  <td>3 Year Fixed</td>
-                  <td><b>2.69%</b></td>
-                </tr>
-                <tr>
-                  <td>4 Year Fixed</td>
-                  <td><b>2.69%</b></td>
-                </tr>
-                <tr>
-                  <td>5 Year Fixed</td>
-                  <td><b>2.19%</b></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <section class="homeRatesAdRight box-body col-md-12">
+        <div class="box-rates-ad-left">
+          <h3>Take advantage of our great rates now!</h3><br />
+          <table id="rates-table" class="table table-striped table-bordered table-primary">
+            <thead class="thead-dark">
+              <tr>
+                <th colspan="2" scope="col">Rates</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5 Year Variable</td>
+                <td><b>2.90%</b></td>
+              </tr>
+              <tr>
+                <td>1 Year Fixed</td>
+                <td><b>2.69%</b></td>
+              </tr>
+              <tr>
+                <td>2 Year Fixed</td>
+                <td><b>2.69%</b></td>
+              </tr>
+              <tr>
+                <td>3 Year Fixed</td>
+                <td><b>2.69%</b></td>
+              </tr>
+              <tr>
+                <td>4 Year Fixed</td>
+                <td><b>2.69%</b></td>
+              </tr>
+              <tr>
+                <td>5 Year Fixed</td>
+                <td><b>2.19%</b></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
+    </section>
 
-      <!-- <section class="homeCallLeft">
-        <div class="boxBody">
+    <!-- <section class="row"></section>
+      <section class="homeCallLeft col">
+        <div class="box-body">
           <div class="boxCallLeft">
             <p>call/contact content goes here</p>
           </div>
         </div>
       </section>
       <section class="homeCallRight">
-        <div class="boxBody">
+        <div class="box-body">
           <div class="boxCallRight">
             Content here
           </div>
         </div>
-      </section> -->
-    </section> <!-- End of grid -->
+      </section>
+    </section> -->
   </div> <!-- End of container -->
 
-  <!-- Footer (note: need row class to prevent padding from parent .container-fluid) -->
   <footer>
     <div class="footer row">
       <!-- small devices combine all columns into 1 -->
@@ -208,13 +214,6 @@
         <p>Email: info@joepurewal.ca</p>
       </div>
     </div>
-    <!-- <div class="footer row">
-      <div class="col">
-        <p>Direct: (905) 330-6090 <span class="vertical-bar">|</span> Office: (905) 281-3555</p>
-        <p>Fax: 1-888-529-3144</p>
-        <p>Email: info@joepurewal.ca</p>
-      </div>
-    </div> -->
     <!-- columns for social media links, etc. -->
     <!-- <div class="col-sm-2">
     </div>
@@ -226,6 +225,19 @@
   <script src="js/jquery-3.4.1.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
+  <!--Start of Tawk.to Script-->
+  <!-- <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/5ebae3c98ee2956d73a07b24/default';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script> -->
+  <!--End of Tawk.to Script-->
   <script src="js/home.js"></script>
 </body>
 </html>

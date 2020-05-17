@@ -1,84 +1,71 @@
+/* set default font of page */
 body {
   font-family: 'Roboto', sans-serif;
 }
-
-/* Grid area elements */
-.homeBanner { grid-area: homeBanner; }
-.homeReviewLeft { grid-area: homeReviewLeft; }
-.homeReviewRight { grid-area: homeReviewRight; }
-.homeRatesAdLeft { grid-area: homeRatesAdLeft; }
-.homeRatesAdRight { grid-area: homeRatesAdRight; }
-.homeCallLeft { grid-area: homeCallLeft; }
-.homeCallRight { grid-area: homeCallRight; }
-.homeRatesDescRight { grid-area: homeRatesDescRight; }
-.homeRatesWidgetLeft { grid-area: homeRatesWidgetLeft; }
-.homeBlogLeft { grid-area: homeBlogLeft; }
-.homeBlogRight { grid-area: homeBlogRight; }
-.homeMortgageRemLeft { grid-area: homeMortgageRemLeft; }
-.homeMortgageRemRight { grid-area: homeMortgageRemRight; }
-.homeExtraAreaLeft { grid-area: homeExtraAreaLeft; }
-.homeExtraAreaRight { grid-area: homeExtraAreaRight; }
-
-.homeGrid {
-  /* set max width of all elements within main grid */
-  max-width: 1050px;
-  /* center all elements within main grid */
-  margin: auto;
-}
-
 /* Colour all vertical bars to theme colour */
 .vertical-bar {
   color: #d8ae4d;
 }
-
-/* box for all content below banner, excluding footer 
-   - note: portrait mode excludes final element */
-/* .boxAll {
+/* Prevent cursor from turning to selectable cursor when hovering over SVG text */
+/* text {
+  cursor: default;
 } */
-/* is set differently in portrait */
-.boxBody {
-  min-height: 300px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 160px;
 }
 
-/* change default bootstrap font alphas to make them brighter over dark background */
-.navbar-dark .navbar-nav .nav-link {
-  color: rgba(255,255,255,0.8);
-}
-.navbar-dark .navbar-nav .nav-link.disabled {
-  color: rgba(255,255,255,0.5);
-}
-.navbar-light .navbar-nav .nav-link {
-  color: rgba(0,0,0,0.8);
-}
-.navbar-light .navbar-nav .nav-link.disabled {
-  color: rgba(0,0,0,0.5);
-}
-/* apply a custom shadow to the navbar when scrolled */
-#topNav .shadow-lg {
-  z-index: 9999;
-  box-shadow: 6px 10px 5px 0px rgba(0,0,0,0.1);
-}
+/* change default navbar font alphas to make them brighter over dark background */
+.navbar-dark .navbar-nav .nav-link { color: rgba(255,255,255,0.78); }
+.navbar-dark .navbar-nav .nav-link:hover { color: rgba(255,255,255,0.9); }
+.navbar-dark .navbar-nav .nav-link.disabled { color: rgba(255,255,255,0.5); }
+.navbar-light .navbar-nav .nav-link { color: rgba(0,0,0,0.78); }
+.navbar-light .navbar-nav .nav-link:hover { color: rgba(0,0,0,1); }
+.navbar-light .navbar-nav .nav-link.disabled { color: rgba(0,0,0,0.5); }
 
 /* add custom style to navbar */
 .navbar-custom {
+  z-index: 9999;
   background-color: transparent;
-  text-transform: uppercase;
   /* font-size: 1.2em; */
-  transition: background-color 0.35s, color 0.35s;
+  /* -webkit-transition: background-color 0.35s, color 0.35s;
+     -moz-transition: background-color 0.35s, color 0.35s;
+      -ms-transition: background-color 0.35s, color 0.35s;
+       -o-transition: background-color 0.35s, color 0.35s;
+          transition: background-color 0.35s, color 0.35s; */
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  -moz-transition: background-color 0.2s, color 0.2s;
+   -ms-transition: background-color 0.2s, color 0.2s;
+    -o-transition: background-color 0.2s, color 0.2s;
+       transition: background-color 0.2s, color 0.2s;
+  /* Enable hardware acceleration to fix laggy transitions */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
 }
 /* navbar bg colour after scrolling down from top */
 .navbar-custom.nav-scrolled {
   background-color: #042557;
 }
-/* ensure brand image never appears too large */
-/* #brand {
-  max-width: 375px;
-} */
+
+/* container of all content below navbar, excluding footer */
+.home-grid {
+  max-width: 1050px;  /* set max width of all elements within main grid */
+  margin: auto; /* center all elements within main grid */
+  place-items: center; /* allows background to fill entire area */
+}
 
 /* also see portrait mode rules */
-.homeBanner {
+.home-banner {
   /* max height of banner is defined separately in portrait */
   /* max width of banner is defined separately in portrait/landscape */
   text-transform: uppercase;
@@ -87,11 +74,16 @@ body {
   /* font-family: 'PT Serif', serif; */
   font-family: 'Libre Baskerville', serif;
   /* font-weight: bold; */
-  border-bottom: 1px solid #d8ae4d;
+  border-bottom: 1px solid #d8ae4d; 
   padding-bottom: 20px;
-  width: 100%;
+  /* width: 100%; */
 }
-
+/* style all lines of the banner SVGs */
+line {
+  fill: none;
+  stroke: #d8ae4d; /* alt red colour: #d31717 */
+  stroke-width: 2;
+}
 /* fade-in animation settings for S E T text & subtitles */
 .setTextS {
   opacity: 0;
@@ -100,6 +92,12 @@ body {
    -ms-transition: opacity 1.25s ease-in;
     -o-transition: opacity 1.25s ease-in;
        transition: opacity 1.25s ease-in;
+  /* Enable hardware acceleration to fix laggy transitions */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .setTextE {
   opacity: 0;
@@ -108,6 +106,12 @@ body {
    -ms-transition: opacity 2s ease-in;
     -o-transition: opacity 2s ease-in;
        transition: opacity 2s ease-in;
+  /* Enable hardware acceleration to fix laggy transitions */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .setTextT {
   opacity: 0;
@@ -116,6 +120,12 @@ body {
    -ms-transition: opacity 2.5s ease-in;
     -o-transition: opacity 2.5s ease-in;
        transition: opacity 2.5s ease-in;
+  /* Enable hardware acceleration to fix laggy transitions */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
 }
 #sloganLetter {
   font-size: 20vmin;
@@ -140,63 +150,35 @@ body {
   opacity: 1;
 }
 
-/* remove default Bootstrap column padding rule */
-/* .col {
-  padding: 0;
-} */
-
-/* style all lines of the banner SVGs */
-line {
-  fill: none;
-  stroke: #d8ae4d;
-  stroke-width: 2;
+/* box for all content below banner, excluding footer
+   - note separate rules in portrait & landscape as well */
+.box-body {
+  min-height: 300px; /* temp to make content line up better */
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
-
 
 /* footer element itself */
 footer {
   color: rgba(255,255,255,0.8);
   background-color: #042557;
-  /* replace default 50px margin-bottom with padding to cover whitespace w/bg */
+  /* replace default 50px margin-bottom whitespace with padding to show BG instead */
   margin-bottom: 0;
-  padding-top: 20px;
+  padding-top: 30px; /* should match the distance from footer to content above */
   padding-bottom: 50px;
 }
-/* actual footer class */
+/* custom footer class */
 .footer {
   text-align: center;
-  /* width equal to homeGrid width */
+  margin: auto;
+  /* width equal to home-grid width */
   max-width: 1050px;
   width: 100%;
-  margin: auto;
 }
 
 @media screen and (orientation: portrait) {
   /* Grid */
-  .homeGrid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-        "homeBanner"
-        "homeReviewLeft"
-        "homeReviewRight"
-        "homeRatesAdLeft"
-        "homeRatesAdRight"
-        "homeCallLeft"
-        "homeCallRight"
-        /* "homeRatesCompareLeft"
-        "homeRatesCompareRight"
-        "homeRatesWidgetLeft"
-        "homeRatesDescRight"
-        "homeBlogLeft"
-        "homeBlogRight"
-        "homeMortgageRemLeft"
-        "homeMortgageRemRight"
-        "homeExtraAreaLeft"
-        "homeExtraAreaRight" */
-    ;
-    gap: 10px;
+  .home-grid {
     place-items: center; /* allows background to fill entire area */
   }
   /* End of portrait grid */
@@ -205,8 +187,8 @@ footer {
     font-size: 0.965em;
   }
 
-  /* box for all content, portrait only */
-  .boxAll:not(:last-child) {
+  /* box for all content, portrait version */
+  .box-all:not(:last-child) {
     border-bottom: 1px solid #d8ae4d;
   }
 
@@ -216,20 +198,20 @@ footer {
   .setTextAnim {
     background-size: auto;
     width: 100%;
+    margin-bottom: 6px; /* diff margin in landscape vs. portrait; should have it scale somehow instead */
   }
   .setLetters {
     line-height: 30vmin;
   }
   .setSubtitle {
     /* make this smaller if subtitle text is taking up too much space */
-    font-size: 3.35vmin
+    font-size: 3.35vmin;
   }
   
-  .boxBody {
+  .box-body {
     /* min-height: 250px; */
-
     /* enforces "boxed" width for body content */
-    max-width: 500px;
+    max-width: 450px;
     /* vertically center content w/flex & align-items */
     display: flex;
     align-items: center;
@@ -242,43 +224,26 @@ footer {
   }
 }
 
+/* === Landscape view === */
 @media screen and (orientation: landscape) {
-  /* Grid */
-  .homeGrid {
-    display: grid;
-    /* grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) ); */
-    grid-auto-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas:
-        "homeBanner homeBanner"
-        "homeReviewLeft homeReviewRight"
-        "homeRatesAdLeft homeRatesAdRight"
-        /* "homeCallLeft homeCallRight" */
-        /* "homeRatesCompareLeft homeRatesCompareRight"
-        "homeRatesWidgetLeft homeRatesDescRight"
-        "homeBlogLeft homeBlogRight"
-        "homeMortgageRemLeft homeMortgageRemRight"
-        "homeExtraAreaLeft homeExtraAreaRight" */
-    ;
-    gap: 20px;
-    place-items: center; /* allows background to fill entire area */
-  }
 
-  /* don't display bottom-border on bottom row */
-  .boxAll:not(:nth-last-child(-n+2)) {
-    border-bottom: 1px solid #d8ae4d;
-  }
-  /* .boxAll:not(:last-child) {
-    border-bottom: 1px solid #d8ae4d;
-  } */
-
-  .homeBanner {
+  .home-banner {
     max-width: 1050px;
   }
+  .setTextAnim {
+    width: 100%;
+    margin-bottom: 20px; /* diff in landscape vs. portrait; should have it scale somehow instead */
+  }
+
+  /* box for all content, landscape version */
+  /* don't display bottom-border on bottom row */
+  .box-all:not(:nth-last-child(-n+2)) {
+    border-bottom: 1px solid #d8ae4d;
+  }
   
-  .boxBody {
+  .box-body {
     max-width: 500px; /* enforces "boxed" width for body content */
-    /* vertically center content by applying flex to boxBody elements! */
+    /* vertically center content by applying flex to box-body elements! */
     display: flex;
     /* justify-content: center; */
     text-align: center;
@@ -286,17 +251,9 @@ footer {
   }
 }
 
-/* @media screen and (orientation: landscape) and (max-width: 1490px) {
+/* MOBILE landscape mode */
+/* @media screen and (orientation: landscape) and (max-width: 3000) {
   #brand {
-    max-width: 40%;
-    max-height: 40%;
+    max-width: 100px;
   }
 } */
-
-/* MOBILE landscape mode */
-@media screen and (orientation: landscape) and (max-width: 750) {
-  #brand {
-    max-width: 20%;
-    max-height: 20%;
-  }
-}
