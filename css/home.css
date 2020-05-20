@@ -11,15 +11,13 @@ body {
   cursor: default;
 } */
 
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+
+/* IE NAVBAR SCROLL FIX: The sticky class is added to the navbar with JS when it reaches its scroll position
+   also see padding-top on ".sticky + .content" in portrait/landscape */
 .sticky {
   position: fixed;
   top: 0;
   width: 100%;
-}
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 160px;
 }
 
 /* change default navbar font alphas to make them brighter over dark background */
@@ -32,19 +30,24 @@ body {
 
 /* add custom style to navbar */
 .navbar-custom {
-  z-index: 9999;
+  z-index: 9999; /* necessary for IE */
   background-color: transparent;
   /* font-size: 1.2em; */
+  -webkit-transition: background-color 0.35s;
+  -moz-transition: background-color 0.35s;
+   -ms-transition: background-color 0.35s;
+    -o-transition: background-color 0.35s;
+       transition: background-color 0.35s;
   /* -webkit-transition: background-color 0.35s, color 0.35s;
      -moz-transition: background-color 0.35s, color 0.35s;
       -ms-transition: background-color 0.35s, color 0.35s;
        -o-transition: background-color 0.35s, color 0.35s;
           transition: background-color 0.35s, color 0.35s; */
-  -webkit-transition: background-color 0.2s, color 0.2s;
+  /* -webkit-transition: background-color 0.2s, color 0.2s;
   -moz-transition: background-color 0.2s, color 0.2s;
    -ms-transition: background-color 0.2s, color 0.2s;
     -o-transition: background-color 0.2s, color 0.2s;
-       transition: background-color 0.2s, color 0.2s;
+       transition: background-color 0.2s, color 0.2s; */
   /* Enable hardware acceleration to fix laggy transitions */
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
@@ -55,6 +58,10 @@ body {
 /* navbar bg colour after scrolling down from top */
 .navbar-custom.nav-scrolled {
   background-color: #042557;
+  /* Box shadow impacts performance. Maybe fade it in AFTER other transitions? */
+  /* -webkit-box-shadow: 8px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 8px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 8px 10px 5px 0px rgba(0,0,0,0.75); */
 }
 
 /* container of all content below navbar, excluding footer */
@@ -150,6 +157,11 @@ line {
   opacity: 1;
 }
 
+/* border below all blocks of content; should be replaced by portrait & landscape rules using last-child etc. */
+.box-all {
+  border-bottom: 1px solid #d8ae4d;
+}
+
 /* box for all content below banner, excluding footer
    - note separate rules in portrait & landscape as well */
 .box-body {
@@ -168,7 +180,7 @@ footer {
   padding-bottom: 50px;
 }
 /* custom footer class */
-.footer {
+.footer-content {
   text-align: center;
   margin: auto;
   /* width equal to home-grid width */
@@ -177,11 +189,14 @@ footer {
 }
 
 @media screen and (orientation: portrait) {
-  /* Grid */
+  /* IE NAVBAR SCROLL FIX: Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 4.5em;
+  }
+
   .home-grid {
     place-items: center; /* allows background to fill entire area */
   }
-  /* End of portrait grid */
 
   p {
     font-size: 0.965em;
@@ -189,6 +204,7 @@ footer {
 
   /* box for all content, portrait version */
   .box-all:not(:last-child) {
+  /* .box-body:last-child { */
     border-bottom: 1px solid #d8ae4d;
   }
 
@@ -224,8 +240,12 @@ footer {
   }
 }
 
-/* === Landscape view === */
-@media screen and (orientation: landscape) {
+/* === Desktop landscape view === */
+@media screen and (orientation: landscape) and (min-width: 800px) {
+  /* IE NAVBAR SCROLL FIX: Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 8.5em;
+  }
 
   .home-banner {
     max-width: 1050px;
@@ -237,7 +257,7 @@ footer {
 
   /* box for all content, landscape version */
   /* don't display bottom-border on bottom row */
-  .box-all:not(:nth-last-child(-n+2)) {
+  .box-body:not(:nth-last-child(-n+2)) {
     border-bottom: 1px solid #d8ae4d;
   }
   
@@ -251,9 +271,36 @@ footer {
   }
 }
 
-/* MOBILE landscape mode */
-/* @media screen and (orientation: landscape) and (max-width: 3000) {
+/* MOBILE landscape view */
+@media screen and (orientation: landscape) and (max-width: 799px) {
   #brand {
-    max-width: 100px;
+    max-width: 500px;
   }
-} */
+  /* IE NAVBAR SCROLL FIX: Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 150px;
+  }
+
+  .home-banner {
+    max-width: 1050px;
+  }
+  .setTextAnim {
+    width: 100%;
+    margin-bottom: 20px; /* diff in landscape vs. portrait; should have it scale somehow instead */
+  }
+
+  /* box for all content, landscape version */
+  /* don't display bottom-border on bottom row */
+  .box-body:not(:nth-last-child(-n+2)) {
+    border-bottom: 1px solid #d8ae4d;
+  }
+  
+  .box-body {
+    max-width: 200px; /* enforces "boxed" width for body content */
+    /* vertically center content by applying flex to box-body elements! */
+    display: flex;
+    /* justify-content: center; */
+    text-align: center;
+    align-items: center;
+  }
+}

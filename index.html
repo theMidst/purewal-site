@@ -16,8 +16,9 @@
     <!-- <nav id="utility-nav" class="navbar navbar-light row">
       <a href="#">Call now!</a>
     </nav> -->
-    
-    <!-- Note: - no-gutters prevents need for container-fluid; otherwise navbar too wide, creates H-scroller 
+  <!-- </div> -->
+  <!-- <div class="container-fluid"> -->
+    <!-- Note: - .no-gutters prevents need for container-fluid; otherwise navbar too wide, creating an annoying H-scroll
                - sticky-top is added by JS if browser is not IE. Otherwise, applies custom sticky code -->
     <nav id="topNav" class="navbar navbar-expand-lg navbar-light navbar-custom row no-gutters">
       <a class="navbar-brand col" href="index.html">
@@ -64,9 +65,8 @@
       </div>
     </nav>
   <!-- </div> -->
-  
-  <div class="container-fluid home-grid content">
 
+  <div class="container-fluid home-grid content">
     <section class="row">
       <section class="home-banner col col-sm-12">
         <div class="house"><!-- If I don't wrap in a div, SVG goes INSANE. Probably col screwing it up -->
@@ -112,14 +112,14 @@
       </section>
     </section>
 
-    <section class="row box-all">
-      <section class="homeReviewLeft box-body col-md-12">
-        <div class="box-review-left">
+    <section class="row box-all mx-auto">
+      <section class="homeReviewLeft box-body col-sm-12 col-lg-6 mx-auto">
+        <div class="box-review-left mx-auto">
           <img class="img-fluid" src="images/house.jpeg" alt="Home">
         </div>
       </section>
-      <section class="homeReviewRight box-body col-md-12">
-        <div class="box-review-right">
+      <section class="homeReviewRight box-body col-sm-12 col-lg-6 mx-auto">
+        <div class="box-review-right mx-auto">
           <h2>WHO WE ARE</h2>
           <p>As part of INVIS, Canada’s largest mortgage brokerage firm, we have spent the last 20 years providing clients with innovative mortgage products that suit their individual needs and objectives. Whether it is arranging a purchase, refinance, debt consolidation, equity take-outs, investment properties, or cash back mortgages, we take pride in offering clients service that is professional and ethical.</p>
           <!-- Image goes here -->
@@ -130,17 +130,17 @@
       </section>
     </section>
 
-    <section class="row box-all">
+    <section class="row box-all mx-auto">
       <!-- Temp: removed boxall to remove border on bottom-most content blocks -->
-      <section class="homeRatesAdLeft box-body col-md-12">
-        <div class="box-rates-ad-left">
+      <section class="homeRatesAdLeft box-body col-sm-12 col-lg-6 mx-auto">
+        <div class="box-rates-ad-left mx-auto">
           <h2>Joe Purewal & Associates</h2>
           <p>Direct: (905) 330-6090 <span class="vertical-bar">|</span> Office: (905) 281-3555</p>
           <p><a href="#testimonials">See what our clients think!</a></p>
         </div>
       </section>
-      <section class="homeRatesAdRight box-body col-md-12">
-        <div class="box-rates-ad-left">
+      <section class="homeRatesAdRight box-body col-sm-12 col-lg-6 mx-auto">
+        <div class="box-rates-ad-right mx-auto">
           <h3>Take advantage of our great rates now!</h3><br />
           <table id="rates-table" class="table table-striped table-bordered table-primary">
             <thead class="thead-dark">
@@ -198,15 +198,15 @@
   </div> <!-- End of container -->
 
   <footer>
-    <div class="footer row">
+    <div class="footer-content row">
       <!-- small devices combine all columns into 1 -->
       <div class="col-lg-4 col-sm-12">
         <p><b>Joe Purewal & Associates</b></p>
         <p>Brokerage #10801</p>
       </div>
       <div class="col-lg-3 col-sm-12">
-        <p>151 City Centre Drive, Suite 601</p>
-        <p>Mississauga, ON, L5B 1M7</p>
+        <p>201 City Centre Drive, Suite 409</p>
+        <p>Mississauga, ON, L5B 2T4</p>
       </div>
       <div class="col-lg-5 col-sm-12">
         <p>Direct: (905) 330-6090 <span class="vertical-bar">|</span> Office: (905) 281-3555</p>

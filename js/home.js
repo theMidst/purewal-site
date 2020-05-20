@@ -1,3 +1,6 @@
+
+var finishedLoading = false;
+
 /* === WINDOW LOAD === */
 
 // animates the S E T text on window load
@@ -45,7 +48,7 @@ function scrollFunction() {
       navbar.classList.add("navbar-dark");      // invert colour scheme
       document.getElementById("brand").src = bannerLogoNameLight; // invert logo
       navbar.classList.add("nav-scrolled"); // trigger the fade in
-      navbar.classList.add("shadow-lg");  // add a shadow
+      // navbar.classList.add("shadow-lg");  // add a shadow (ADDS LAG)
     }
   }
   // else (scrolled to the top)
@@ -54,7 +57,7 @@ function scrollFunction() {
     navbar.classList.add("navbar-light");
     document.getElementById("brand").src = bannerLogoNameDark;
     navbar.classList.remove("nav-scrolled");
-    navbar.classList.remove("shadow-lg"); // remove the shadow
+    // navbar.classList.remove("shadow-lg"); // remove the shadow (NOTE: SHADOW ADDS LAG)
   }
 }
 
@@ -76,6 +79,7 @@ function ieScrollFunction() {
       document.getElementById("brand").src = bannerLogoNameLight; // invert logo
       navbar.classList.add("nav-scrolled"); // trigger the fade in
       navbar.classList.add("shadow-lg");  // add a shadow
+      //navbar.parentElement.classList.add("sticky");     // sticky-top alternative (doesn't work in IE)
       navbar.classList.add("sticky");     // sticky-top alternative (doesn't work in IE)
     }
   }
@@ -87,25 +91,29 @@ function ieScrollFunction() {
     navbar.classList.remove("nav-scrolled");
     // remove the shadow
     navbar.classList.remove("shadow-lg");
+    //navbar.parentElement.classList.remove("sticky");    // sticky-top alternative (doesn't work in IE)
     navbar.classList.remove("sticky");    // sticky-top alternative (doesn't work in IE)
   }
 }
 
 // if user is on IE11 or earlier, use non-bootstrap sticky navbar code
 var browserIsIE = false;  // set this true if using IE (remove if never used)
-if (window.document.documentMode) {
+if (!finishedLoading && window.document.documentMode) {
   // align nav with rest of body by adding padding equal to size of navbar (Bootstrap takes care of this on other browsers)
-  document.getElementsByClassName("content")[0].style.paddingTop = document.getElementById("topNav").style.height;
+  //document.getElementsByClassName("content")[0].style.paddingTop = document.getElementById("topNav").style.height;
+
   // set the internet explorer-friendly window scroll function
   window.onscroll = function() { this.ieScrollFunction() };
-  browserIsIE = true; // flag that the user's browser is IE
+  browserIsIE = true;
+  finishedLoading = true;
 }
-else {
-  // set the regular scroll function for the Bootstrap navbar
+// set the regular scroll function for the Bootstrap navbar
+else if (!finishedLoading) {
   window.onscroll = function() { this.scrollFunction() };
   // assign sticky-top Bootstrap class to the navbar
-  let navbar = document.getElementById("topNav");
+  let navbar = document.getElementById("topNav");//.parentElement;
   navbar.classList.add("sticky-top");
+  finishedLoading = true;
 }
 
 // $(document).ready(function() {
