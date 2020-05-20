@@ -241,7 +241,7 @@ footer {
 }
 
 /* === Desktop landscape view === */
-@media screen and (orientation: landscape) and (min-width: 800px) {
+@media screen and (orientation: landscape) { /* and (min-width: 800px) {*/
   /* IE NAVBAR SCROLL FIX: Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
   .sticky + .content {
     padding-top: 8.5em;
@@ -263,40 +263,6 @@ footer {
   
   .box-body {
     max-width: 500px; /* enforces "boxed" width for body content */
-    /* vertically center content by applying flex to box-body elements! */
-    display: flex;
-    /* justify-content: center; */
-    text-align: center;
-    align-items: center;
-  }
-}
-
-/* MOBILE landscape view */
-@media screen and (orientation: landscape) and (max-width: 799px) {
-  #brand {
-    max-width: 500px;
-  }
-  /* IE NAVBAR SCROLL FIX: Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-  .sticky + .content {
-    padding-top: 150px;
-  }
-
-  .home-banner {
-    max-width: 1050px;
-  }
-  .setTextAnim {
-    width: 100%;
-    margin-bottom: 20px; /* diff in landscape vs. portrait; should have it scale somehow instead */
-  }
-
-  /* box for all content, landscape version */
-  /* don't display bottom-border on bottom row */
-  .box-body:not(:nth-last-child(-n+2)) {
-    border-bottom: 1px solid #d8ae4d;
-  }
-  
-  .box-body {
-    max-width: 200px; /* enforces "boxed" width for body content */
     /* vertically center content by applying flex to box-body elements! */
     display: flex;
     /* justify-content: center; */
