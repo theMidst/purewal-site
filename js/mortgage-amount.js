@@ -1,3 +1,3 @@
-function buttonToMortgageAmount () {
-    window.location.assign("../apply/mortgageamount.html")
+function buttonToTimeFrame () {
+    window.location.assign("../apply/timeframe.html")
 }
