@@ -25,3 +25,7 @@ function changeArrowColor(step) {
     document.getElementById("clickedID3").className = "arrow-change";
   }
 }
+
+function buttonToMortgageInfo () {
+    window.location.assign("../apply/mortgageinfo.html")
+}

@@ -22,6 +22,17 @@
     padding-right: 30px;
 }
 
+.card:hover {
+    border: solid 2px rgb(216, 174, 77);
+    box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
+}
+
+.active {
+    background-color: #042557 !important;
+    color:white;
+    box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
+  }
+
 @media screen and (orientation: portrait) {
     body {
         max-width: auto;

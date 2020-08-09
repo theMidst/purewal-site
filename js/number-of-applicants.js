@@ -1,5 +1,5 @@
-function buttonToMortgageAmount () {
-    window.location.assign("../apply/mortgageamount.html")
+function buttonToApply () {
+    window.location.assign("../apply/apply.html")
 }
 
 $(".card").click(function(){

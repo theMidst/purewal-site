@@ -1,3 +1,4 @@
+
 function submitContact() {
   var cName = $("#name").val();
   var cEmail = $("#email").val();
@@ -11,4 +12,9 @@ function submitContact() {
   sessionStorage.setItem("cProvince", cProvince);
   sessionStorage.setItem("cMortgageSpecialist", cMortgageSpecialist);
   sessionStorage.setItem("doneContactInfo", doneContactInfo);
+}
+
+function buttonToApply () {
+    window.location.assign("../apply/apply.html")
+
 }
