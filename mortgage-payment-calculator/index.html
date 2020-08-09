@@ -1,248 +1,494 @@
 <!DOCTYPE html>
-<!--
-    Created on : 2020-03-05
-    Author     : Kent Nippard, Andrew McEachren
--->
-
-<html>
-
+<html lang="en">
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166260803-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166260803-1');
+  </script>
+
   <title>Joe Purewal - Mortgage Payment Calculator</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- bootstrap before our CSS -->
-  <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-  <!-- load script for nav bar first -->
-  <!-- <link rel="stylesheet" type="text/css" href="css/navBarStyle.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=PT+Serif&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css"> -->
   <link rel="stylesheet" type="text/css" href="../css/mortgagepaymentcalculator.css">
 </head>
-
 <body>
-  <div class="col-sm-12">
-    <!-- this is the Purchase tab -->
+  <!-- container-fluid stretches nav to full width, & prevents page wiggles on refresh that mess up navbar -->
+  <!-- I'd use plain "container" to center navbar content, but background also becomes centered. TODO: Find way to stretch BG to full page width, but center navbar contents. -->
+  <div class="container-fluid sticky-top">
+    <!-- .no-gutters prevents need for container-fluid; otherwise navbar too wide, creating an annoying H-scroll
+      -- custom "sticky" class is added by JS if browser is IE -->
+    <nav id="topNav" class="navbar navbar-expand-sm navbar-light navbar-custom row">
+      <a class="navbar-brand mx-auto" href="../index.html">
+        <img class="img-fluid" id="brand" src="../images/JP-328×89-REVERSE-Web-Banner-Black.png" alt="Joe Purewal Logo" />
+        <!-- <span class="sr-only">(current)</span> -->
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link text-uppercase disabled" href="#" tabindex="-1" aria-disabled="true">Rates</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link text-uppercase dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tools
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item disabled" href="#">Education</a>
+              <a class="dropdown-item" href="../mortgage-payment-calculator/index.html">Mortgage Payment Calculator</a>
+              <a class="dropdown-item disabled" href="#">CMHC Calculator</a>
+              <a class="dropdown-item disabled" href="#">Land Transfer Tax Calc.</a>
+              <a class="dropdown-item disabled" href="#">Affordability Calculator</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" target="_blank" href="https://www.cmhc-schl.gc.ca/">CMHC</a>
+              <a class="dropdown-item" target="_blank" href="http://www.genworth.ca/en/index.aspx">Genworth</a>
+              <a class="dropdown-item" target="_blank" href="https://www.canadaguaranty.ca/">Canada Guaranty</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase disabled" href="#" tabindex="-1" aria-disabled="true">Mortgages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase disabled" href="#" tabindex="-1" aria-disabled="true">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase disabled" href="#" tabindex="-1" aria-disabled="true">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="../apply/apply.html">Apply</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!-- Rates calculator -->
+  <!-- TODO:
+    - form inputs are screwing up the column sizing.
+    - center the proper columns to make everything centered! (Prob shouldn't use text-center)
+    - apply mx-auto or other method to make sure spacing is appropriate.
+    - in mobile / portrait, strip down to just 1 input column (instead of the landscape 4 columns.) How do I do this?
+      - look into sass (see Bootstrap grid, ctrl+f sass) to create columns w/css differently in portrait (1 col) vs. landscape (4 cols)
+      - OR just try Bootstrap display property to hide content on sm etc.
+    - play with the body { font-size } in portrait to get the right balance of text size w/content
+    - make tooltip for asking price: -- STEP 1: Enter the price of the home you're interested in and press GO. -->
+  <div class="container-fluid calculator">
+    <!-- NOTE THIS BR HERE. SHOULD USE PADDING INSTEAD... ON BOTTOM OF NAVBAR BOX? -->
+    <h3 id="calculator-title">Mortgage Payment Calculator</h3>
+    <hr />
+    <!-- this is the Purchase tab. Note the "Renewal or Refinance" tab -->
     <form action="calculateMortgage">
-      <table class="table">
-        <thead>
-          <tr>
-            <td colspan="7">
-              <!-- make tooltip for asking price:
-                -- STEP 1: Enter the price of the home you're interested in and press GO.
-              -->
-              <label for="askingPrice">Asking Price</label>
-              <input type="text" name="askingPrice" />
-              <input type="button" value="Go" />
-            </td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td rowspan="2">
-              <img src="https://octicons.github.com/icon/info"><!-- help button / tooltip -->
-            </td>
-            <td rowspan="2">
-              <label for="downPayment1">Down Payment</label>
-            </td>
-            <td>
-              <!-- icon column -->
-            </td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-          </tr>
-          <tr>
-            <!-- <td></td>
-            <th></th> -->
-            <td>-
-              <!-- minus icon -->
-            </td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-          </tr>
-          <tr>
-            <td>?
-              <!-- help button / tooltip -->
-              </td>
-            <td>Mortgage Insurance</td>
-            <td>+
-              <!-- plus icon -->
-            </td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-          </tr>
-          <tr class="table-info">
-            <td>
-              <!-- help button / tooltip -->
-            </td>
-            <th>Total Mortgage Required</th>
-            <td>=
-              <!-- icon goes here -->
-            </td>
-            <td class="totalMortgage1">$-</td>
-            <td class="totalMortgage2">$-</td>
-            <td class="totalMortgage3">$-</td>
-            <td class="totalMortgage4">$-</td>
-          </tr>
-          <tr>
-            <td>?
-              <!-- help button / tooltip -->
-            </td>
-            <td>Amortization period</td>
-            <td>
-              <!-- empty, no icon -->
-            </td>
-            <td>
-              <!-- populate select with 5-30 + other years -->
-              <select class="amortizationPeriod1">
-                <option>Select</option>
-                <option>5</option>
-                <option>10</option>
-                <option>15</option>
-                <option>20</option>
-                <option>25</option>
-                <option>30</option>
-                <option>Other</option>
+      <!-- Asking Price -->
+      <div class="form-row form-group">
+        <div class="col-auto">
+          <!-- make tooltip for asking price: -- STEP 1: Enter the price of the home you're interested in and press GO.  -->
+          <label for="askingPrice" class="col-form-label"><b>Asking Price</b></label>
+        </div>
+        <div class="col-6">
+          <!-- <input id="askingPrice" type="number" min="1.00" step="0.01" max="999999999" class="form-control form-control-sm text-center" /> -->
+          <input id="askingPrice" type="text" class="form-control form-control-sm text-center" />
+        </div>
+        <div class="col-auto">
+          <!-- <input id="goCalculate" type="button" class="btn btn-primary btn-sm" onclick="calculate()" value="Go" /> -->
+          <button id="btnGoCalculate" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Go</button>
+        </div>
+      </div>
+      <!-- Down Payment (contains two nested rows) -->
+      <div class="form-row align-items-center">
+        <!-- help button / tooltip -->
+        <div class="col-1 col-sm-auto"> <!-- on sm and up, '-auto' is thinner than '-1' -->
+          <!-- Could use: <img src="https://octicons.github.com/icon/info"> --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+        </div>
+        <div class="col-3">
+          <label for="downPaymentPct" class="col-form-label">Down Payment</label>
+        </div>
+         <!-- This column is to hold the nested rows. Note: applying col-auto here ruins everything -->
+        <div class="col pr-0">
+          <!-- The following .align-items-center may be unnecessary (supposed to help center the nested rows) -->
+          <div class="form-row align-items-center"> <!-- First Down Payment row with percentages -->
+            <!-- icon column placeholder (next rows have icons), note the svg is blank but has same viewbox -->
+            <div class="col-auto col-sm-1"><!-- <div class="col-lg-auto col-sm-auto"> -->
+              <svg width="1em" height="1em" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"></svg>
+            </div>
+            <!-- hide some columns in portrait depending on width -->
+            <div class="col-10 col-sm"><input type="text" class="downPaymentPct form-control form-control-sm text-center" name="downPaymentPct" placeholder="-%" /></div>
+            <div class="col-sm d-none d-sm-block"><input type="text" class="downPaymentPct form-control form-control-sm text-center" placeholder="-%" /></div>
+            <div class="col-md d-none d-md-block"><input type="text" class="downPaymentPct form-control form-control-sm text-center" placeholder="-%" /></div>
+            <div class="col-md d-none d-md-block"><input type="text" class="downPaymentPct form-control form-control-sm text-center" placeholder="-%" /></div>
+          </div>
+          <!-- 2nd Down Payment row containing the calculated amount -->
+          <div class="form-row">
+            <!-- "Minus" icon -->
+            <div class="col-auto col-sm-1">
+              <label for="downPaymentAmt" class="col-form-label">
+                <svg class="bi bi-dash-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+              </label>
+            </div>
+            <!-- hide the next columns in portrait depending on width -->
+            <div class="col-10 col-sm"><input type="text" class="downPaymentAmt form-control form-control-sm text-center" name="downPaymentAmt" placeholder="$-" /></div>
+            <div class="col-sm d-none d-sm-block"><input type="number" min="1.00" step="0.01" max="999999999" class="downPaymentAmt form-control form-control-sm text-center" placeholder="$-" /></div>
+            <div class="col-md d-none d-md-block"><input type="number" min="1.00" step="0.01" max="999999999" class="downPaymentAmt form-control form-control-sm text-center" placeholder="$-" /></div>
+            <div class="col-md d-none d-md-block"><input type="number" min="1.00" step="0.01" max="999999999" class="downPaymentAmt form-control form-control-sm text-center" placeholder="$-" /></div>
+          </div>
+        </div>
+      </div>
+      <!-- Mortgage Insurance row -->
+      <div class="form-row form-group align-items-center">
+        <div class="col-auto">
+          <!-- help button / tooltip -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+        </div>
+        <div class="col-3"><div class="align-middle">Mortgage Insurance</div></div>
+        <div class="col-auto col-sm-1">
+          <svg class="bi bi-plus-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+            <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          </svg>
+        </div>
+        <!-- hide some columns in portrait depending on width -->
+        <div id="mortgage-insurance-col-1" class="col col-sm"><div id="mortgage-insurance" class="text-center">$-</div></div>
+        <div id="mortgage-insurance-col-2" class="col-sm d-none d-sm-block"><div class="text-center">$-</div></div>
+        <div id="mortgage-insurance-col-3" class="col-md d-none d-md-block"><div class="text-center">$-</div></div>
+        <div id="mortgage-insurance-col-4" class="col-md d-none d-md-block"><div class="text-center">$-</div></div>
+      </div>
+      <!-- Total Mortgage Required row -->
+      <div class="form-row align-items-center form-group table-info">
+        <div class="col-1">
+          <!-- help button / tooltip -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+            <path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path>
+          </svg>
+        </div>
+        <div class="col-3 col-sm-4 col-lg-2">Total Mortgage Required</div>
+        <div class="col-1">
+          <!-- equals icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" height="16px" width="16px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><g><path d="M50,5C25.2,5,5,25.2,5,50s20.2,45,45,45s45-20.2,45-45S74.8,5,50,5z M50,85c-19.3,0-35-15.7-35-35s15.7-35,35-35   s35,15.7,35,35S69.3,85,50,85z"/><rect x="25" y="55" width="50" height="10"/><rect x="25" y="35" width="50" height="10"/></g></svg>
+          <!-- <svg viewBox="0 0 16 16" width="1em" height="1em">
+            <circle cx="8" cy="8" r="7.2" stroke="black" stroke-width="1" fill="none" /> -->
+            <!-- <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/> -->
+            <!-- <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/> -->
+          <!-- </svg> -->
+        </div>
+        <!-- hide some columns in portrait depending on width -->
+        <div id="total-mortgage-1" class="col col-sm-auto"><div class="text-center">$-</div></div>
+        <div id="total-mortgage-2" class="col-sm-auto d-none d-sm-block"><div class="text-center">$-</div></div>
+        <div id="total-mortgage-3" class="col-md-auto d-none d-md-block"><div class="text-center">$-</div></div>
+        <div id="total-mortgage-4" class="col-md-auto d-none d-md-block"><div class="text-center">$-</div></div>
+      </div>
+      <!-- Amortization Period -->
+      <div class="form-row align-items-center">
+        <div class="col-1">
+          <!-- help button / tooltip -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+        </div>
+        <div class="col-4">Amortization period</div>
+        <div class="col col-sm-auto">
+          <select id="amortizationPeriod" class="form-control form-control-sm text-truncate"></select>
+        </div>
+        <div class="col-sm-auto d-none d-sm-block">
+          <select id="amortizationPeriod" class="form-control form-control-sm text-truncate"></select>
+        </div>
+        <div class="col-md-auto d-none d-md-block">
+          <select id="amortizationPeriod" class="form-control form-control-sm text-truncate"></select>
+        </div>
+        <div class="col-md-auto d-none d-md-block">
+          <select id="amortizationPeriod" class="form-control form-control-sm text-truncate"></select>
+        </div>
+      </div>
+      <!-- Mortgage Rate -->
+      <div class="form-row align-items-center">
+        <div class="col-1">
+          <!-- help button / tooltip -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+        </div>
+        <div class="col-4">Mortgage rate</div>
+        <!-- hide some columns in portrait depending on width -->
+        <div class="col text-center"><input type="button" class="selectRate btn btn-primary btn-sm" onClick="selectRate()" value="Select Rate" /></div>
+        <div class="col-sm-auto d-none d-sm-block"><input type="button" class="selectRate btn btn-primary btn-sm" onClick="selectRate()" value="Select Rate" /></div>
+        <div class="col-md-auto d-none d-md-block"><input type="button" class="selectRate btn btn-primary btn-sm" onClick="selectRate()" value="Select Rate" /></div>
+        <div class="col-md-auto d-none d-md-block"><input type="button" class="selectRate btn btn-primary btn-sm" onClick="selectRate()" value="Select Rate" /></div>
+      </div>
+      <!-- Total Mortgage Payment Insurance -->
+      <div class="form-row align-items-center">
+        <!-- help button / tooltip -->
+        <div class="col-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+        </div>
+        <div class="col-4">Mortgage type</div>
+        <!-- filled in depending on selection -->
+        <div id="mortgageType" class="col text-center">[5-Year Fixed]</div>
+        <div id="mortgageType" class="col-sm-auto d-none d-sm-block"></div>
+        <div id="mortgageType" class="col-md-auto d-none d-md-block"></div>
+        <div id="mortgageType" class="col-md-auto d-none d-md-block"></div>
+      </div>
+      <!-- Total Mortgage Payment -->
+      <div class="form-row align-items-center table-info">
+        <div class="col-1">
+          <!-- help button / tooltip -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+        </div>
+        <div class="col-4">Total Mortgage Payment</div>
+        <!-- hide some columns in portrait depending on width -->
+        <div class="col text-center totalMortgagePayment1">$-</div>
+        <div class="col-sm-auto d-none d-sm-block totalMortgagePayment2">$-</div>
+        <div class="col-md-auto d-none d-md-block totalMortgagePayment3">$-</div>
+        <div class="col-md-auto d-none d-md-block totalMortgagePayment4">$-</div>
+      </div>
+      <!-- Frequency -->
+      <div class="form-row align-items-center table-info">
+        <div class="col-1"></div> <!-- Empty tooltip column -->
+        <div class="col-4">Frequency
+          <select class="form-control form-control-sm text-truncate">
+            <option>Monthly</option>
+            <option>Bi-Weekly</option>
+            <option>Accelerated Bi-Weekly</option>
+          </select>
+        </div>
+        <!-- hide some columns in portrait depending on width -->
+        <div class="col text-center"><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></div>
+        <div class="col-sm-auto d-none d-sm-block"><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></div>
+        <div class="col-md-auto d-none d-md-block"><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></div>
+        <div class="col-md-auto d-none d-md-block"><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></div>
+      </div>
+      <!-- Land Transfer Tax + Profile cols -->
+      <div class="form-row">
+        <!-- Land transfer tax col -->
+        <div class="col-12 col-sm">
+          <!-- Header row -->
+          <div class="form-row">
+            <div class="col-1"><!-- no help icon --></div>
+            <div class="col">Land Transfer Tax</div>
+            <div class="col-1"><!-- no icon --></div>
+            <div class="col" id="landTransferTax"></div>
+          </div>
+          <!-- Land transfer tax - provincial -->
+          <div class="form-row">
+            <div class="col-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+            </div>
+            <div class="col-4">Provincial:</div>
+            <div class="col-auto">
+              <svg class="bi bi-plus-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              </svg>
+            </div>
+            <div class="col text-center" id="provincialTransferTax">$[1,939]</div>
+          </div>
+          <!-- Land transfer tax - municipal -->
+          <div class="form-row">
+            <div class="col-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+            </div>
+            <div class="col-4">Municipal:</div>
+            <div class="col-auto">
+              <svg class="bi bi-plus-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              </svg>
+            </div>
+            <div class="col text-center" id="municipalTransferTax">$[0]</div>
+          </div>
+          <!-- Land transfer tax - rebate -->
+          <div class="form-row">
+            <div class="col-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+            </div>
+            <div class="col-4">Rebate:</div>
+            <div class="col-auto">
+              <svg class="bi bi-dash-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+              </svg>
+            </div>
+            <div class="col text-center" id="rebateTransferTax">$[0]</div>
+          </div>
+        </div>
+        <!-- Profile column -->
+        <div class="col-12 col-sm">
+          <!-- Header row -->
+          <div class="form-row">
+            <div class="col-1"><!-- Empty tooltip icon column --></div>
+            <div class="col">Profile</div>
+          </div>
+          <!-- Location row [TODO: Put dividing line here, like an </hr>] -->
+          <div class="form-row">
+            <div class="col-1"><!-- Empty tooltip icon column --></div>
+            <div class="col-5">Location</div>
+            <div class="col">
+              <select id="profileLocation" class="form-control form-control-sm text-truncate">
+                <option>Burlington, ON</option>
               </select>
-            </td>
-            <td>
-              <!-- populate select with 5-30 + other years -->
-              <select class="amortizationPeriod2">
-                <option>Select</option>
-                <option>5</option>
-                <option>10</option>
-                <option>15</option>
-                <option>20</option>
-                <option>25</option>
-                <option>30</option>
-                <option>Other</option>
-              </select>
-            </td>
-            <td>
-              <!-- populate select with 5-30 + other years -->
-              <select class="amortizationPeriod3">
-                <option>Select</option>
-                <option>5</option>
-                <option>10</option>
-                <option>15</option>
-                <option>20</option>
-                <option>25</option>
-                <option>30</option>
-                <option>Other</option>
-              </select>
-            </td>
-            <td>
-              <!-- populate select with 5-30 + other years -->
-              <select class="amortizationPeriod4">
-                <option>Select</option>
-                <option>5</option>
-                <option>10</option>
-                <option>15</option>
-                <option>20</option>
-                <option>25</option>
-                <option>30</option>
-                <option>Other</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>?
-              <!-- help button / tooltip -->
-            </td>
-            <td>Mortgage rate</td>
-            <td>
-              <!-- no icon here -->
-            </td>
-            <td><input type="button" class="selectRate" onClick="selectRate()" value="Select Rate" /></td>
-            <td><input type="button" class="selectRate" onClick="selectRate()" value="Select Rate" /></td>
-            <td><input type="button" class="selectRate" onClick="selectRate()" value="Select Rate" /></td>
-            <td><input type="button" class="selectRate" onClick="selectRate()" value="Select Rate" /></td>
-          </tr>
-          <tr>
-            <td>?
-              <!-- help button / tooltip -->
-            </td>
-            <td>Mortgage type</td>
-            <td>
-              <!-- no icon here -->
-            </td>
-            <td class="mortgageType">
-              <!-- filled in depending on selection -->
-            </td>
-            <td class="mortgageType">
-              <!-- filled in depending on selection -->
-            </td>
-            <td class="mortgageType">
-              <!-- filled in depending on selection -->
-            </td>
-            <td class="mortgageType">
-              <!-- filled in depending on selection -->
-            </td>
-          </tr>
-          <tr class="table-info">
-            <td rowspan="2">?
-              <!-- help button / tooltip -->
-            </td>
-            <th>Total Mortgage Payment</th>
-            <td>
-              <!-- no icon here -->
-            </td>
-            <td class="totalMortgagePayment1">$-</td>
-            <td class="totalMortgagePayment2">$-</td>
-            <td class="totalMortgagePayment3">$-</td>
-            <td class="totalMortgagePayment4">$-</td>
-          </tr>
-          <tr class="table-info">
-            <td>Frequency
-              <select>
-                <!-- make the select box less wide than its dropdown window -->
-                <option>Monthly</option>
-                <option>Bi-Weekly</option>
-                <option>Accelerated Bi-Weekly</option>
-              </select>
-            </td>
-            <td></td>
-            <td><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></td>
-            <td><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></td>
-            <td><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></td>
-            <td><input type="button" class="getRate" onClick="getRate()" value="Get Rate" /></td>
-          </tr>
-          <tr>
-            <td><!-- no help icon --></td>
-            <td><!-- no icon --></td>
-            <td id="landTransferTax"></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>?</td>
-            <td>Provincial:</td>
-            <td>+</td>
-            <td id="provincialTransferTax"></td>
-          </tr>
-          <tr>
-            <td>?</td>
-            <td>Municipal:</td>
-            <td>+</td>
-            <td id="municipalTransferTax"></td>
-          </tr>
-          <tr>
-            <td>?</td>
-            <td>Rebate:</td>
-            <td>-</td>
-            <td id="provincialTransferTax"></td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+          </div>
+          <!-- First-time home buyer row -->
+          <div class="form-group form-row">
+            <div class="col-1"><!-- Empty tooltip icon column --></div>
+            <div class="col-5">
+              <label class="form-check-label" for="chkFirstTimer">I am a first-time home buyer</label>
+            </div>
+            <div class="col">
+              <div class="form-check text-center">
+                <input class="form-check-input" type="checkbox" id="chkFirstTimer">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Accordions -->
+      <div class="accordion" id="accordionExample">
+        <!-- Cash Needed card -->
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Cash Needed
+              </button>
+            </h2>
+          </div>
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              Explanation followed by figures in table style
+            </div>
+          </div>
+        </div>
+        <!-- Monthly Expenses -->
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Monthly Expenses
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              Expenses table...
+            </div>
+          </div>
+        </div>
+        <!-- Interest Rate Risk -->
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Interest Rate Risk
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+              Description followed by mortgage figures
+            </div>
+          </div>
+        </div>
+        <!-- Amortization Schedule -->
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Amortization Schedule
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+            <div class="card-body">
+              Graph data
+            </div>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
+
+  <footer>
+    <div class="footer-content row">
+      <!-- small devices combine all columns into 1 -->
+      <div class="col-lg-3 col-sm-12">
+        <!-- Make this Joe Purewal text semi-bold w/Google fonts -->
+        <p><b>Joe Purewal & Associates</b></p>
+        <p>Brokerage #10801</p>
+      </div>
+      <div class="col-lg-3 col-sm-12">
+        <p>201 City Centre Drive, Suite 409</p>
+        <p>Mississauga, ON, L5B 2T4</p>
+      </div>
+      <div class="col-lg-5 col-sm-12">
+        <!-- <div class="row">
+          <div class="col-12 col-sm"><p>Direct: (905) 330-6090</p></div>
+          <div class="col-sm-auto d-none d-sm-block">
+            <span class="vertical-bar"></span>|</span>
+          </div>
+          <div class="col-12 col-sm"><p>Office: (905) 281-3555</></div>
+        </div> -->
+        <!-- <p>Direct: (905) 330-6090 <span class="vertical-bar">|</span> Office: (905) 281-3555</p> -->
+        <p>Direct: (905) 330-6090</p>
+        <p>Office: (905) 281-3555</p>
+        <p>Fax: 1-888-529-3144</p>
+        <p>Email: info@joepurewal.ca</p>
+      </div>
+      <div class="col-lg-1 col-sm-12">
+        <!-- <nav class="sqs-svg-icon--list">
+          <a href="https://www.instagram.com/joepurewalandassociates/" target="_blank" class="sqs-svg-icon--wrapper instagram-unauth">
+            <div>
+              <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
+                <use class="sqs-use--icon" xlink:href="#instagram-unauth-icon"></use>
+                <use class="sqs-use--mask" xlink:href="#instagram-unauth-mask"></use>
+              </svg>
+            </div>
+          </a><a href="https://www.facebook.com/JoePurewalAssociates" target="_blank" class="sqs-svg-icon--wrapper facebook-unauth">
+            <div>
+              <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
+                <use class="sqs-use--icon" xlink:href="#facebook-unauth-icon"></use>
+                <use class="sqs-use--mask" xlink:href="#facebook-unauth-mask"></use>
+              </svg>
+            </div>
+          </a><a href="https://twitter.com/jorapurewal" target="_blank" class="sqs-svg-icon--wrapper twitter-unauth">
+            <div>
+              <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
+                <use class="sqs-use--icon" xlink:href="#twitter-unauth-icon"></use>
+                <use class="sqs-use--mask" xlink:href="#twitter-unauth-mask"></use>
+              </svg>
+            </div>
+          </a>
+        </nav> -->
+      </div>
+    </div>
+  </footer>
   
   <!-- scripts: jquery & popper before bootstrap JS -->
-  <script src="js/jquery-3.4.1.js"></script>
+  <script src="../js/jquery-3.5.1.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="bootstrap/js/bootstrap.js"></script>
-  <script src="../js/homeScript.js"></script>
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
+  <script src="../bootstrap/js/bootstrap.js"></script>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/5ebae3c98ee2956d73a07b24/default';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+  <script src="../js/mortgage-payment-calculator.js"></script>
 </body>
 </html>

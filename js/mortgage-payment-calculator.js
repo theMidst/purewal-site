@@ -1,39 +1,68 @@
 
 var finishedLoading = false;
 
-/* === WINDOW LOAD === */
 
-// animates the S E T text on window load
-function animateSetText() {
-  // animate the S E T text by applying fade transitions to each letter & subtitle
-  let textS = document.getElementsByClassName("setTextS")[0];
-  textS.className += " setTextFade";
-  textS = document.getElementsByClassName("setTextS")[1];
-  textS.className += " setTextFade";
 
-  let textE = document.getElementsByClassName("setTextE")[0];
-  textE.className += " setTextFade";
-  textE = document.getElementsByClassName("setTextE")[1];
-  textE.className += " setTextFade";
-  
-  let textT = document.getElementsByClassName("setTextT")[0];
-  textT.className += " setTextFade";
-  textT = document.getElementsByClassName("setTextT")[1];
-  textT.className += " setTextFade";
+// jQuery code
+$(document).ready(function() {
+  // prevent text from being selectable. Don't want to see cursor either
+  // $("text").attr("onselectstart","return false");
+
+  // fill form with data
+  $("#amortizationPeriod").append(
+    "<option>Select</option>",
+    "<option>5</option>",
+    "<option>10</option>",
+    "<option>15</option>",
+    "<option>20</option>",
+    "<option>25</option>",
+    "<option>30</option>",
+    "<option>Other</option>"
+  );
+
+  // "Go" button unfocus event
+  $(" #btnGoCalculate ").focusout(function() {
+    // add a currency prefix to the asking price if not already there
+    var askingPrice = $( "#askingPrice" ).val();
+    if (!askingPrice.startsWith("$")) {
+      $(" #askingPrice ").val('$' + askingPrice);
+    }
+  });
+
+  // "Go" button click event
+  $("#btnGoCalculate").click(function() {
+    var askingPrice = $("#askingPrice").val();
+
+    if (askingPrice.startsWith("$")) {
+      askingPrice = askingPrice.substring(1);
+    }
+
+    if (askingPrice >= 1) {
+      var downPaymentPct = 0.05;
+      var downPaymentAmt = askingPrice * downPaymentPct;
+      $(".downPaymentPct").val("5%");
+      $(".downPaymentAmt").val("$" + downPaymentAmt.toFixed(2));
+    }
+    else {
+      $("#btnGoCalculate").tooltip();
+    }
+  });
+});
+
+/* === CALCULATOR FUNCTIONS === */
+
+function getRate() {
+  window.open('../apply/apply.html', '_blank');
 }
 
-// do all necessary actions at window load
-window.onload = function() {
-  animateSetText(); // animate the S E T text
-};
-
+// NOTE: this is a direct copy/paste of the home.js navbar code. Update as needed.
 
 /* === WINDOW ONSCROLL === */
 
 // When the user scrolls down 20px from the top of the document, show the nav bg
 // When the user scrolls to the top of the page, hide the nav bg (to show the banner)
-const bannerLogoNameLight = "images/JP-328×89-REVERSE-Web-Banner-crop.png";
-const bannerLogoNameDark = "images/JP-328×89-REVERSE-Web-Banner-Black-crop.png";
+const bannerLogoNameLight = "../images/JP-328×89-REVERSE-Web-Banner-crop.png";
+const bannerLogoNameDark = "../images/JP-328×89-REVERSE-Web-Banner-Black-crop.png";
 function scrollFunction() {
   // get the navbar reference by ID
   let navbar = document.getElementById("topNav");
@@ -64,7 +93,7 @@ function scrollFunction() {
 // navbar scroll function for internet explorer browsers
 function ieScrollFunction() {
   // get the navbar reference by ID
-  let navbar = document.getElementById("topNav");
+  let navbar = $("#topNav"); //= document.getElementById("topNav");
   let navOffset = navbar.offsetTop; // ruins nav scroll when used in if below ("scrollDistance > navOffset")
 
   // get IE to scroll better: https://stackoverflow.com/questions/2717252/document-body-scrolltop-is-always-0-in-ie-even-when-scrolling
@@ -77,9 +106,9 @@ function ieScrollFunction() {
       navbar.classList.remove("navbar-light");  // invert colour scheme
       navbar.classList.add("navbar-dark");      // invert colour scheme
       document.getElementById("brand").src = bannerLogoNameLight; // invert logo
-      navbar.classList.add("nav-scrolled"); // trigger the fade in
-      navbar.classList.add("shadow-lg");  // add a shadow
-      // navbar.classList.add("sticky");     // sticky-top alternative (doesn't work in IE)
+      navbar.classList.add("nav-scrolled");     // trigger the fade in
+      navbar.classList.add("shadow-lg");        // add a shadow
+      // navbar.classList.add("sticky");        // sticky-top alternative (doesn't work in IE)
       //navbar.parentElement.classList.add("sticky");
     }
   }
@@ -123,8 +152,3 @@ if (!finishedLoading) {
   // finally, position user at top of window (hack to fix scroll-down on refresh)
   // $(window).scrollTop(0); // doesn't actually seem to work. leaving so I remember
 }
-
-// $(document).ready(function() {
-//   // prevent text from being selectable. Don't want to see cursor either
-//   // $("text").attr("onselectstart","return false");
-// });
