@@ -1,31 +1,40 @@
-function buttonToContactInfo () {
-    window.location.assign("../apply/contactinfo.html")
-}
-
-function submitApplication() {
-  if (doneContactInfo) {
+$(document).ready(function() {
+  if (sessionStorage.getItem("doneContactInfo") === "true") {
+    document.getElementById("clickedID1").className = "arrow-change";
     changeArrowColor(1);
   }
-  else if (doneMortgageInfo) {
+  if (sessionStorage.getItem("doneMortgageInfo") === "true") {
     changeArrowColor(2);
   }
-  else if (doneReviewTerms) {
+  if (sessionStorage.getItem("doneReviewTerms") === "true") {
     changeArrowColor(3);
   }
-}
+});
 
-function changeArrowColor(step) {
-  if (step == 1) {
-    document.getElementById("clickedID1").className = "arrow-change";
-  }
-  else if (step == 2) {
-    document.getElementById("clickedID2").className = "arrow-change";
-  }
-  else if (step == 3) {
-    document.getElementById("clickedID3").className = "arrow-change";
-  }
+function buttonToContactInfo () {
+  window.location.assign("../apply/contactinfo.html");
 }
 
 function buttonToMortgageInfo () {
-    window.location.assign("../apply/mortgageinfo.html")
+  window.location.assign("../apply/mortgageinfo.html");
+}
+
+function buttonToTermsConditions () {
+  window.location.assign("../apply/termsconditions.html");
+}
+
+function submitApplication() {
+  // gather vars, submit to PHP!
+}
+
+function changeArrowColor(step) {
+  if (step === 1) {
+    document.getElementById("clickedID1").className = "arrow-change";
+  }
+  else if (step === 2) {
+    document.getElementById("clickedID2").className = "arrow-change";
+  }
+  else if (step === 3) {
+    document.getElementById("clickedID3").className = "arrow-change";
+  }
 }

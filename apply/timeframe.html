@@ -36,7 +36,7 @@
     <section class="container-fluid mx-auto">
 
         <div class="text-center">
-            <div class="card card-style">
+            <div class="card card-style" id="45Days">
                 <div class="card-body">
                     <h5 class="card-text">Within 45 Days</h5>
                 </div>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="text-center">
-            <div class="card card-style">
+            <div class="card card-style" id="120Days">
                 <div class="card-body">
                     <h5 class="card-text">Within 120 Days</h5>
                 </div>
@@ -52,7 +52,7 @@
         </div>
 
         <div class="text-center">
-            <div class="card card-style">
+            <div class="card card-style" id="unsure">
                 <div class="card-body">
                     <h5 class="card-text">Unsure</h5>
                 </div>
@@ -60,8 +60,8 @@
         </div>
 
         <div class="text-center">
-            <button type="button" class="btn btn-default btn-border" onclick="history.back()">Back</button>
-            <button type="submit" class="btn btn-default btn-border" onclick="buttonToLivingStatus()">Next</button>
+            <button type="button" class="btn btn-default btn-border" onclick="btnBack()">Back</button>
+            <button type="submit" class="btn btn-default btn-border" onclick="btnToLivingStatus()">Next</button>
         </div>
     </section>
     <script src="../js/jquery-3.5.1.js"></script>
