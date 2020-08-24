@@ -26,10 +26,11 @@ h2 {
 
 @media screen and (orientation: portrait) {
     body {
+        font-size: 0.63em;
         max-width: auto;
         display: inline-block;
         vertical-align: middle;
         float: none;
-        margin: 10px;
+        margin: 10px; 
     }
 }
