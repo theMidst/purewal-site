@@ -1,8 +1,8 @@
 <?php
 // Import PHPMailer classes into the global namespace
+use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 // Load Composer's autoloader
 require '../vendor/autoload.php';
@@ -11,63 +11,64 @@ require '../vendor/autoload.php';
 $mail = new PHPMailer(true);
 
 try {
-  // retrieve contact info
-  $error_messages = '';
-  $name = isset($_POST['name']) ? $_POST['name'] : $error_messages .= 'Name N/A;';
-  $visitor_email = isset($_POST['email']) ? $_POST['email'] : $error_messages .= 'Email N/A;';
-  $phone = isset($_POST['phone']) ? $_POST['phone'] : $error_messages .= 'Phone N/A';
-  $province = isset($_POST['province']) ? $_POST['province'] : $error_messages .= 'Province N/A;';
-  $mortgage_specialist = isset($_POST['mortgageSpecialist']) ? $_POST['mortgageSpecialist'] : 'N/A';  // not an error!
+    // retrieve contact info, recording missing data as errors
+    $error_messages = '';
+    $name = isset($_POST['name']) ? $_POST['name'] : $error_messages .= 'Name N/A; ';
+    $visitor_email = isset($_POST['email']) ? $_POST['email'] : $error_messages .= 'Email N/A; ';
+    $phone = isset($_POST['phone']) ? $_POST['phone'] : $error_messages .= 'Phone N/A; ';
+    $province = isset($_POST['province']) ? $_POST['province'] : $error_messages .= 'Province N/A; ';
+    $mortgage_specialist = isset($_POST['mortgageSpecialist']) ? $_POST['mortgageSpecialist'] : 'N/A'; // not an error!
 
-  // retrieve mortgage info
-  $mortgage_type = isset($_POST['mortgageType']) ? $_POST['mortgageType'] : $error_messages .= 'Mortgage type N/A;';
-  $mortgage_amount = isset($_POST['mortgageAmount']) ? $_POST['mortgageAmount'] : $error_messages .= 'Mortgage amount N/A;';
-  $time_frame = isset($_POST['timeFrame']) ? $_POST['timeFrame'] : $error_messages .= 'Time frame N/A;';
-  $living_status = isset($_POST['livingStatus']) ? $_POST['livingStatus'] : $error_messages .= 'Living status N/A;';
-  $number_of_applicants = isset($_POST['numberOfApplicants']) ? $_POST['numberOfApplicants'] : $error_messages .= 'Number of applicants N/A;';
+    // retrieve mortgage info
+    $mortgage_type = isset($_POST['mortgageType']) ? $_POST['mortgageType'] : $error_messages .= 'Mortgage type N/A; ';
+    $mortgage_amount = isset($_POST['mortgageAmount']) ? $_POST['mortgageAmount'] : $error_messages .= 'Mortgage amount N/A; ';
+    $time_frame = isset($_POST['timeFrame']) ? $_POST['timeFrame'] : $error_messages .= 'Time frame N/A; ';
+    $living_status = isset($_POST['livingStatus']) ? $_POST['livingStatus'] : $error_messages .= 'Living status N/A; ';
+    $number_of_applicants = isset($_POST['numberOfApplicants']) ? $_POST['numberOfApplicants'] : $error_messages .= 'Number of applicants N/A;';
 
-  // apply mailserver (PHPMailer) settings
-  $mail->SMTPDebug = SMTP::DEBUG_SERVER;                  // Enable verbose debug output
-  $mail->isSMTP();                                        // Send using SMTP
-  $mail->Host       = 'smtp.gmail.com';                   // Set the SMTP server to send through
-  $mail->SMTPAuth   = true;                               // Enable SMTP authentication
-  $mail->Username   = 'purewalmailer@gmail.com';          // SMTP username
-  $mail->Password   = 'TcETrTQq5GN6jD3';                  // SMTP password
-  $mail->SMTPSecure = 'PHPMailer::ENCRYPTION_SMTPS';      //'PHPMailer::ENCRYPTION_STARTTLS';   // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged, but Google uses TLS
-  $mail->Port       = 587;                                // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+    // halt if any variables are missing
+    if ($error_messages != '') {
+        throw new Exception('Error(s) retrieving application data: ' . $error_messages);
+    }
 
-  // set email recipients
-  $mail->setFrom('purewalmailer@gmail.com', 'Purewal Mailer');
-  $mail->addAddress('kent.nippard@gmail.com', 'Joe Purewal');   // Add a recipient w/optional name
-  $mail->addAddress('andrewmceachren@gmail.com', 'Joe Purewal');
-  $mail->addReplyTo($visitor_email, $name);
-  // $mail->addCC('cc@example.com');
-  // $mail->addBCC('bcc@example.com');
+    // apply mailserver (PHPMailer) settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;  // Enable verbose debug output
+    $mail->isSMTP();  // Send using SMTP
+    $mail->Host = 'smtp.gmail.com';  // Set the SMTP server to send through
+    $mail->SMTPAuth = true;  // Enable SMTP authentication
+    $mail->Username = 'purewalmailer@gmail.com';  // SMTP username
+    $mail->Password = 'TcETrTQq5GN6jD3';  // SMTP password
+    $mail->SMTPSecure = 'PHPMailer::ENCRYPTION_SMTPS';  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged, 'PHPMailer::ENCRYPTION_STARTTLS' default
+    $mail->Port = 587;  // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
-  // // add email attachments   
-  // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');   // add attachments w/optional name
+    // set email recipients
+    $mail->setFrom('purewalmailer@gmail.com', 'Purewal Mailer');
+    $mail->addAddress('kent.nippard@gmail.com', 'Joe Purewal'); // Add a recipient w/optional name
+    $mail->addReplyTo($visitor_email, $name);
+    $mail->addCC('andrewmceachren@gmail.com');
+    // $mail->addBCC('bcc@example.com');
 
-  // set email content
-  $mail->isHTML(true);                                    // set email format to HTML
-  $mail->Subject = 'New Application Received';            // set the subject line
-  // define plain-text email body for non-HTML clients
-  $mail->AltBody = "A new application has been received from:\n" .
-    "- Name: $name\n" .
-    "- Email: $visitor_email\n" .
-    "- Phone: $phone\n" .
-    "- Province: $province\n" .
-    "- Mortgage Specialist: $mortgage_specialist\n" .
-    "\nMortgage Info:\n" .
-    "- Mortgage type: $mortgage_type\n" .
-    "- Mortgage amount: $$mortgage_amount\n" .
-    "- Time frame: $time_frame\n" .
-    "- Living status: $living_status\n" .
-    "- Number of applicants: $number_of_applicants";
-  // define HTML-format email body for compatible clients
-  $table_style = "padding: 5px; background-color: lightblue; border: 2px solid black; border-radius: 15px;";
-  $cell_style = "padding: 5px; min-width: 150px; background-color: white; border: 2px solid black; border-radius: 3px;";
-  $mail->Body = "<html>" .
-    "<head>
+    // set email content
+    $mail->isHTML(true); // set email format to HTML
+    $mail->Subject = 'New Application Received'; // set the subject line
+    // define plain-text email body for non-HTML clients
+    $mail->AltBody = "A new application has been received from:\n" .
+        "- Name: $name\n" .
+        "- Email: $visitor_email\n" .
+        "- Phone: $phone\n" .
+        "- Province: $province\n" .
+        "- Mortgage Specialist: $mortgage_specialist\n" .
+        "\nMortgage Info:\n" .
+        "- Mortgage type: $mortgage_type\n" .
+        "- Mortgage amount: $$mortgage_amount\n" .
+        "- Time frame: $time_frame\n" .
+        "- Living status: $living_status\n" .
+        "- Number of applicants: $number_of_applicants";
+    // define HTML-format email body for compatible clients
+    $table_style = "padding: 5px; background-color: lightblue; border: 2px solid black; border-radius: 15px;";
+    $cell_style = "padding: 5px; min-width: 150px; background-color: white; border: 2px solid black; border-radius: 3px;";
+    $mail->Body = "<html>
+    <head>
       <title>Application Received</title>
     </head>
     <body style='font-family: \"Helvetica Neue\", Helvetica, Arial;'>
@@ -122,10 +123,12 @@ try {
     </body>
     </html>";
 
-  // send the SMTP email via PHPMailer and Google
-  $mail->send();
-  echo 'E-mail sent successfully.';
+    // send the prepared email via PHPMailer
+    $mail->send();
+    echo 'E-mail sent successfully.';
+
 } catch (Exception $e) {
-  echo "E-mail could not be sent. Mailer error: {$mail->ErrorInfo}";
+    // todo: use logger instead
+    echo "Mailer error: {$mail->ErrorInfo}";
+    error_log("Mailer error: {$mail->ErrorInfo}");
 }
-?>

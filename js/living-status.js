@@ -11,8 +11,9 @@ function btnBack() {
   history.back();
 }
 
+// returns true if valid
 function saveAndValidate() {
-
+  // validation flag, remains true if all tests valid
   var valid = true;
 
   if ($("#statusOwn").hasClass("active")) {
