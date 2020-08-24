@@ -1,9 +1,5 @@
 // when page loads
 $(document).ready(function () {
-
-  // hide the output box
-  // $("#output").hide();
-
   // colour each nav section the user has completed
   if (sessionStorage.getItem("doneContactInfo") === "true") {
     changeArrowColor(1);

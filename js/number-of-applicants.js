@@ -37,9 +37,12 @@ function btnBack() {
 function buttonToApply() {
   // only move to next page if valid selection
   if (saveAndValidate()) {
+    // TODO: only submit this section if all pages finished
+    // if () {
     // set session bool indicating finished this part of application
     sessionStorage.setItem("doneMortgageInfo", "true");
     window.location.assign("../apply/apply.html")
+    // }
   }
   else {
     alert("You must select a number of applicants.");

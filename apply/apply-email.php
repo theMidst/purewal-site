@@ -27,6 +27,7 @@ try {
     $number_of_applicants = isset($_POST['numberOfApplicants']) ? $_POST['numberOfApplicants'] : $error_messages .= 'Number of applicants N/A;';
 
     // halt if any variables are missing
+    // TODO: check if have enough info to contact user, only continue then
     if ($error_messages != '') {
         throw new Exception('Error(s) retrieving application data: ' . $error_messages);
     }
@@ -129,6 +130,6 @@ try {
 
 } catch (Exception $e) {
     // todo: use logger instead
-    echo "Mailer error: {$mail->ErrorInfo}";
+    // echo "Mailer error: {$mail->ErrorInfo}";
     error_log("Mailer error: {$mail->ErrorInfo}");
 }
