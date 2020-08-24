@@ -3,46 +3,45 @@
     Created on : 2020-01-17, 8:33 PM
     Author     : Kent Nippard, Andrew McEachren
 -->
-
 <html>
 
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166260803-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-166260803-1');
-    </script>
-    <title>Joe Purewal</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../css/mortgageamount.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166260803-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-166260803-1');
+  </script>
+  <title>Joe Purewal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../css/mortgageamount.css">
 </head>
 
 <body>
-    <section class="header text-center">
-        <img class="img-fluid" src="../images/JP-328×89-REVERSE-Web-Banner-Black-crop.png">
-    </section>
-    <hr color="#d8ae4d">
+  <section class="header text-center">
+    <img class="img-fluid" src="../images/JP-328×89-REVERSE-Web-Banner-Black-crop.png">
+  </section>
+  <hr color="#d8ae4d">
 
-    <div class="container-fluid">
-        <h2>Mortgage Amount</h2>
-        <br>
+  <div class="container-fluid">
+    <h2>Mortgage Amount</h2>
+    <br>
 
-        <div class="text-center">
-            <input class="mortgage-input" type="text" value="$" id="mortgageAmount">
-            <br>
-            <button type="button" class="btn btn-default btn-border" onclick="btnBack()">Back</button>
-            <button type="submit" class="btn btn-default btn-border" onclick="btnToTimeFrame()">Next</button>
-        </div>
+    <div class="text-center">
+      <input class="mortgage-input" type="text" value="$" id="mortgageAmount">
+      <br>
+      <button type="button" class="btn btn-default btn-border" onclick="btnBack()">Back</button>
+      <button type="submit" class="btn btn-default btn-border" onclick="btnToTimeFrame()">Next</button>
     </div>
+  </div>
 
-    <script src="../js/jquery-3.5.1.js"></script>
-    <script defer src="../js/mortgage-amount.js"></script>
-    <script defer src="../js/required-funds.js"></script>
+  <script src="../js/jquery-3.5.1.js"></script>
+  <script defer src="../js/mortgage-amount.js"></script>
+  <script defer src="../js/required-funds.js"></script>
 </body>
 
 </html>

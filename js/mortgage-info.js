@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // if user previously chose a type, ensure it is selected when page loads
   var mortgageType = sessionStorage.getItem("mortgageType");
   if (mortgageType != null) {
@@ -10,16 +10,16 @@ function validateAndSave() {
   var valid = true;
 
   if ($("#renew-switch").hasClass("active")) {
-    sessionStorage.setItem("mortgageType", "renew-switch");
+    sessionStorage.setItem("mortgageType", "Renew or switch");
   }
   else if ($("#refinance").hasClass("active")) {
-    sessionStorage.setItem("mortgageType", "refinance");
+    sessionStorage.setItem("mortgageType", "Refinance");
   }
   else if ($("#purchase").hasClass("active")) {
-    sessionStorage.setItem("mortgageType", "purchase");
+    sessionStorage.setItem("mortgageType", "Purchase");
   }
   else if ($("#pre-qualify").hasClass("active")) {
-    sessionStorage.setItem("mortgageType", "pre-qualify");
+    sessionStorage.setItem("mortgageType", "Pre-qualify");
   }
   else {
     valid = false;
@@ -33,17 +33,17 @@ function btnBack() {
   history.back();
 }
 
-function btnToMortgageAmount () {
+function btnToMortgageAmount() {
   // only move to next page if valid selection
   if (validateAndSave()) {
     window.location.assign("../apply/mortgageamount.html")
   }
-  else {    
+  else {
     alert("You must select a mortgage type.");
   }
 }
 
-$(".card").click(function(){
+$(".card").click(function () {
   $(".card").removeClass("active");
   $(this).addClass("active");
 });

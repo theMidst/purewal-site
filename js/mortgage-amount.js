@@ -2,7 +2,7 @@ $(document).ready(function() {
   // if user previously chose a type, ensure it is selected when page loads
   var mortgageAmount = sessionStorage.getItem("mortgageAmount");
   if (mortgageAmount != null) {
-    $("#" + mortgageAmount).val(mortgageAmount);
+    $("#mortgageAmount").val('$' + mortgageAmount);
   }
 });
 

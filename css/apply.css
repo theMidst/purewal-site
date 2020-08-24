@@ -1,8 +1,16 @@
+body {
+  margin-bottom: 15px;
+}
+
 h3 {
     font-family: 'Times New Roman', Times, serif;
 }
 
-
+/* bootstrap alert box formatting */
+.alert {
+  margin: 20px;
+  display: none;
+}
 
 /*.transition-fade {
     opacity: 1;
@@ -28,8 +36,8 @@ html.is-leaving .transition-fade {
     border-radius: 15px;
     max-width: 550px;
     box-shadow: 0 5px 15px rgba(80, 71, 71, 0.4);
-    height: 532px;
-    max-height: 532px;
+    /* height: 532px;
+    max-height: 532px; */
 }
 
 .card {
@@ -67,7 +75,7 @@ html.is-leaving .transition-fade {
     color: #042557;
 }
 
-#arrow-lable {
+#arrow-label {
     font-size: 0.75em;
     color: grey;
     margin: 0;

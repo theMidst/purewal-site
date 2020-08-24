@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // if user previously chose a time frame, ensure it is selected when page loads
   var timeFrame = sessionStorage.getItem("timeFrame");
   if (timeFrame != null) {
@@ -7,17 +7,17 @@ $(document).ready(function() {
 });
 
 function saveAndValidate() {
-  
+
   var valid = true;
 
   if ($("#45Days").hasClass("active")) {
-    sessionStorage.setItem("timeFrame", "45Days");
+    sessionStorage.setItem("timeFrame", "Within 45 days");
   }
   else if ($("#120Days").hasClass("active")) {
-    sessionStorage.setItem("timeFrame", "120Days");
+    sessionStorage.setItem("timeFrame", "Within 120 days");
   }
   else if ($("#unsure").hasClass("active")) {
-    sessionStorage.setItem("timeFrame", "unsure");
+    sessionStorage.setItem("timeFrame", "Unsure");
   }
   else {
     valid = false;
@@ -33,7 +33,7 @@ function btnBack() {
   history.back();
 }
 
-function btnToLivingStatus () {
+function btnToLivingStatus() {
   // only move to next page if valid selection
   if (saveAndValidate()) {
     window.location.assign("../apply/livingstatus.html")
@@ -43,7 +43,7 @@ function btnToLivingStatus () {
   }
 }
 
-$(".card").click(function(){
-    $(".card").removeClass("active");
-    $(this).addClass("active");
+$(".card").click(function () {
+  $(".card").removeClass("active");
+  $(this).addClass("active");
 });

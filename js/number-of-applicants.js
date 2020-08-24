@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // if user previously chose a number of applicants, ensure it is selected when page loads
   var numberOfApplicants = sessionStorage.getItem("numberOfApplicants");
   if (numberOfApplicants != null) {
@@ -7,17 +7,17 @@ $(document).ready(function() {
 });
 
 function saveAndValidate() {
-  
+
   var valid = true;
 
   if ($("#singleApplicant").hasClass("active")) {
-    sessionStorage.setItem("numberOfApplicants", "singleApplicant");
+    sessionStorage.setItem("numberOfApplicants", "Single applicant");
   }
   else if ($("#coApplicant").hasClass("active")) {
-    sessionStorage.setItem("numberOfApplicants", "coApplicant");
+    sessionStorage.setItem("numberOfApplicants", "Co-applicant");
   }
   else if ($("#otherApplicant").hasClass("active")) {
-    sessionStorage.setItem("numberOfApplicants", "otherApplicant");
+    sessionStorage.setItem("numberOfApplicants", "Other applicant");
   }
   else {
     valid = false;
@@ -34,7 +34,7 @@ function btnBack() {
   history.back();
 }
 
-function buttonToApply () {
+function buttonToApply() {
   // only move to next page if valid selection
   if (saveAndValidate()) {
     // set session bool indicating finished this part of application
@@ -46,7 +46,7 @@ function buttonToApply () {
   }
 }
 
-$(".card").click(function(){
-    $(".card").removeClass("active");
-    $(this).addClass("active");
+$(".card").click(function () {
+  $(".card").removeClass("active");
+  $(this).addClass("active");
 });

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // if user previously chose a time frame, ensure it is selected when page loads
   var livingStatus = sessionStorage.getItem("livingStatus");
   if (livingStatus != null) {
@@ -12,17 +12,17 @@ function btnBack() {
 }
 
 function saveAndValidate() {
-  
+
   var valid = true;
 
   if ($("#statusOwn").hasClass("active")) {
-    sessionStorage.setItem("livingStatus", "statusOwn");
+    sessionStorage.setItem("livingStatus", "Owner");
   }
   else if ($("#statusRent").hasClass("active")) {
-    sessionStorage.setItem("livingStatus", "statusRent");
+    sessionStorage.setItem("livingStatus", "Rent");
   }
   else if ($("#statusParents").hasClass("active")) {
-    sessionStorage.setItem("livingStatus", "statusParents");
+    sessionStorage.setItem("livingStatus", "Living with parents");
   }
   else {
     valid = false;
@@ -35,7 +35,7 @@ function saveAndValidate() {
   }
 }
 
-function buttonToNumberOfApplicants () {
+function buttonToNumberOfApplicants() {
   if (saveAndValidate()) {
     window.location.assign("../apply/numberofapplicants.html")
   }
@@ -44,7 +44,7 @@ function buttonToNumberOfApplicants () {
   }
 }
 
-$(".card").click(function(){
+$(".card").click(function () {
   $(".card").removeClass("active");
   $(this).addClass("active");
 });
